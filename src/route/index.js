@@ -4,6 +4,8 @@ import { Route, Routes } from 'react-router-dom'
 import Header from '../layout/Header'
 import Footer from '../layout/Footer'
 import Contact from '../page/Contact'
+import Login from '../page/Login'
+import Report from '../page/Report'
 
 const Routers = () => {
   return (
@@ -12,6 +14,8 @@ const Routers = () => {
         <Routes>
             <Route path='/' element={<Home  />} />
             <Route path='/contact' element={<Contact  />} />
+            <Route path='/login' element={<Login  />} />
+            <Route path='/report' element={<Report  />} />
         </Routes>
         <Footer  />
         {/* <Home  /> */}

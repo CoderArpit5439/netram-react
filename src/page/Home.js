@@ -1,9 +1,9 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-    const navigate = useNavigate();
-     const offer = [
+  const navigate = useNavigate();
+  const offer = [
     {
       icon: "assets/images/service-icon1.png",
       heading: "Night Drive Glasses",
@@ -50,31 +50,31 @@ const Home = () => {
 
   const faqs = [
     {
-      que :"How often should I get my eyes tested?",
-      ans : "We recommend a comprehensive eye exam once every year, or as advised by your optometrist."
+      que: "How often should I get my eyes tested?",
+      ans: "We recommend a comprehensive eye exam once every year, or as advised by your optometrist.",
     },
     {
-      que :"What are the symptoms of digital eye strain?",
-      ans : "Common signs include blurry vision, dry eyes, and headaches after screen use."
+      que: "What are the symptoms of digital eye strain?",
+      ans: "Common signs include blurry vision, dry eyes, and headaches after screen use.",
     },
     {
-      que :"Can I wear progressive lenses for all-day use?",
-      ans : "Yes! Progressive lenses are designed for comfortable, all-day wear across all distances."
+      que: "Can I wear progressive lenses for all-day use?",
+      ans: "Yes! Progressive lenses are designed for comfortable, all-day wear across all distances.",
     },
     {
-      que :"How do photochromic lenses work?",
-      ans : "They darken in sunlight and return to clear indoors, giving your eyes full-time protection."
+      que: "How do photochromic lenses work?",
+      ans: "They darken in sunlight and return to clear indoors, giving your eyes full-time protection.",
     },
     {
-      que :"Are blue cut glasses good for kids?",
-      ans : "Absolutely. They reduce eye strain from digital screens, which is vital for growing eyes."
+      que: "Are blue cut glasses good for kids?",
+      ans: "Absolutely. They reduce eye strain from digital screens, which is vital for growing eyes.",
     },
-  ]
+  ];
   return (
     <div>
-        <div class="home1_banner_outer position-relative">
+      <div class="home1_banner_outer position-relative">
         {/* <!-- Topbar --> */}
-        
+
         {/* <!-- Search Form --> */}
         <div id="search" class="">
           <span class="close">X</span>
@@ -108,10 +108,15 @@ const Home = () => {
                     health.
                   </p>
                   <div class="button_wrapper">
-                    <a onClick={() => {navigate('/contact')}} class="text-decoration-none primary_btn">
+                    <a
+                      onClick={() => {
+                        navigate("/contact");
+                      }}
+                      class="text-decoration-none primary_btn"
+                    >
                       Make Appointment<i class="fa-solid fa-arrow-right"></i>
                     </a>
-                    {/* <a href="contact.html" class="text-decoration-none primary_btn secondary_btn">Read More<i class="fa-solid fa-arrow-right"></i></a> */}
+                    {/* <a href="contact.html" class="text-decoration-none primary_btn secondary_btn">Buy Now<i class="fa-solid fa-arrow-right"></i></a> */}
                   </div>
                 </div>
               </div>
@@ -143,6 +148,120 @@ const Home = () => {
           </div>
         </section>
       </div>
+
+      {/* <!-- Eyewear listing --> */}
+      <div
+        class=" container blog-posts blogpage-section six-main-box"
+        style={{ paddingTop: "100px", paddingBottom: "0px" }}
+      >
+        <div class="row">
+          <div class="col-12 mx-auto">
+            <div class="service_content text-center" data-aos="fade-up">
+              <h6>What We Offer</h6>
+              <h2>We Provide Best Services</h2>
+            </div>
+          </div>
+        </div>
+        <div id="blog" class="col-xl-12">
+          <div
+            class="row wow fadeInUp"
+            style={{ visibility: "visible", animationName: "fadeInUp" }}
+          >
+            {[1, 2, 3, 4]?.map(() => {
+              return (
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                  <div class="blog-box sixcolumn-blog float-left w-100 post-item mb-4">
+                    <div class="post-item-wrap position-relative">
+                      <div
+                        id="blogslider"
+                        class="carousel slide"
+                        data-ride="carousel"
+                      >
+                        <div class="carousel-inner">
+                          <div class="carousel-item">
+                            <img
+                              src="assets/images/standard_post_img02.jpg"
+                              alt="image"
+                              loading="lazy"
+                            />
+                            {/* <!--carousel-item--> */}
+                          </div>
+                          <div class="carousel-item">
+                            <img
+                              src="assets/images/standard_post_img03.jpg"
+                              alt="image"
+                              loading="lazy"
+                            />
+                            {/* <!--carousel-item--> */}
+                          </div>
+                          <div class="carousel-item active">
+                            <img
+                              src="assets/images/standard_post_img04.jpg"
+                              alt="image"
+                              loading="lazy"
+                            />
+                            {/* <!--carousel-item--> */}
+                          </div>
+                          {/* <!--carousel-inner--> */}
+                        </div>
+                        {/* <!-- Left and right controls --> */}
+                        <a
+                          class="carousel-control-prev"
+                          href="#blogslider"
+                          data-slide="prev"
+                        >
+                          <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a
+                          class="carousel-control-next"
+                          href="#blogslider"
+                          data-slide="next"
+                        >
+                          <span class="carousel-control-next-icon"></span>
+                        </a>
+                        {/* <!--blogslider--> */}
+                      </div>
+                      <div class="lower-portion">
+                        <div class="span-i-con">
+                          <i class="fa-solid fa-user"></i>
+                          <span class="text-size-14 text-mr">By : Admin</span>
+                          <i class="tag-mb fa-solid fa-tag"></i>
+                          <span class="text-size-14">Virtual Assistant</span>
+                        </div>
+                        <p class="mb-0 text-size-16">lorem</p>
+                      </div>
+                      <div class="button-portion">
+                        <div class="date">
+                          <i class="mb-0 calendar-ml fa-solid fa-calendar-days"></i>
+                          <span class="mb-0 text-size-14">Dec 20,2022</span>
+                        </div>
+                        <div class="button">
+                          <a
+                            class="mb-0 read_more text-decoration-none"
+                          onClick={()=>{navigate('/eyewear/slug')}}
+                          >
+                            Buy Now
+                          </a>
+                        </div>
+                      </div>
+                      {/* <!--post-item-wrap--> */}
+                    </div>
+                    {/* <!--post-item--> */}
+                  </div>
+                  {/* <!--col--> */}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 mx-auto">
+            <div class="service_content text-center" data-aos="fade-up">
+              <h5 style={{cursor:"pointer",textDecoration:"underline"}} onClick={()=>navigate('/list-eyewear')}>See More</h5>
+            </div>
+          </div>
+        </div>
+      </div>
       {/* <!-- Service --> */}
       <section class="service-con position-relative" id="dropdown">
         <div class="container">
@@ -157,28 +276,27 @@ const Home = () => {
           <div class="row" data-aos="fade-up">
             <div class="col-12">
               <div className="owl-carousel owl-theme">
-  {offer?.map((glass, i) => {
-    return (
-      <div className="item" key={i}>
-        <div className="service-box">
-          <figure className="icon">
-            <img
-              src={glass.icon}
-              alt="image"
-              className="img-fluid"
-            />
-          </figure>
-          <h5>{glass.heading}</h5>
-          <p className="text-size-16">{glass.subheading}</p>
-          {/* <a href="service.html" className="text-decoration-none arrow">
+                {offer?.map((glass, i) => {
+                  return (
+                    <div className="item" key={i}>
+                      <div className="service-box">
+                        <figure className="icon">
+                          <img
+                            src={glass.icon}
+                            alt="image"
+                            className="img-fluid"
+                          />
+                        </figure>
+                        <h5>{glass.heading}</h5>
+                        <p className="text-size-16">{glass.subheading}</p>
+                        {/* <a href="service.html" className="text-decoration-none arrow">
             Learn More<i className="fa-solid fa-arrow-right"></i>
           </a> */}
-        </div>
-      </div>
-    );
-  })}
-</div>
-
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -234,7 +352,8 @@ const Home = () => {
                 <h6>About Us</h6>
                 <h2>We Provide Expert Solutions For Eyes</h2>
                 <p class="text text-size-18">
-                 Dedicated to precise, personalized eye care solutions for your long-term visual health and comfort.
+                  Dedicated to precise, personalized eye care solutions for your
+                  long-term visual health and comfort.
                 </p>
                 <div class="propertise">
                   <ul class="list-unstyled mb-0 list1">
@@ -259,7 +378,7 @@ const Home = () => {
                   </ul>
                 </div>
                 {/* <a href="about.html" class="text-decoration-none primary_btn">
-                  Read More<i class="fa-solid fa-arrow-right"></i>
+                  Buy Now<i class="fa-solid fa-arrow-right"></i>
                 </a> */}
               </div>
             </div>
@@ -1021,41 +1140,36 @@ const Home = () => {
                 <div class="accordian-section-inner position-relative">
                   <div class="accordian-inner">
                     <div id="faq_accordion">
-                      {
-                        faqs?.map((qa,i) =>{
-                          return(
-
-                      <div class="accordion-card">
-                        <div class="card-header" id="headingOne">
-                          <a
-                            href="#"
-                            class="btn btn-link collapsed"
-                            data-toggle="collapse"
-                            data-target={`#collapseOne` + i}
-                            aria-expanded="false"
-                            aria-controls={`collapseOne` + i}
-                          >
-                            <h4 class="mb-0">
-                              {qa.que}
-                            </h4>
-                          </a>
-                        </div>
-                        <div
-                          id={`collapseOne` + i}
-                          class="collapse"
-                          aria-labelledby="headingOne"
-                          data-parent="#faq_accordion"
-                        >
-                          <div class="card-body">
-                            <p class="text-size-16 text-left mb-0">
-                            {qa.ans}
-                            </p>
+                      {faqs?.map((qa, i) => {
+                        return (
+                          <div class="accordion-card">
+                            <div class="card-header" id="headingOne">
+                              <a
+                                href="#"
+                                class="btn btn-link collapsed"
+                                data-toggle="collapse"
+                                data-target={`#collapseOne` + i}
+                                aria-expanded="false"
+                                aria-controls={`collapseOne` + i}
+                              >
+                                <h4 class="mb-0">{qa.que}</h4>
+                              </a>
+                            </div>
+                            <div
+                              id={`collapseOne` + i}
+                              class="collapse"
+                              aria-labelledby="headingOne"
+                              data-parent="#faq_accordion"
+                            >
+                              <div class="card-body">
+                                <p class="text-size-16 text-left mb-0">
+                                  {qa.ans}
+                                </p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                          )
-                        })
-                      }
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -1082,9 +1196,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-     
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

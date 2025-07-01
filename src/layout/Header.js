@@ -170,11 +170,139 @@ const Header = () => {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" onClick={() => {
-                    navigate("/login");
-                  }}>
-                   Check report
+                  <a
+                    class="nav-link dropdown-toggle dropdown-color navbar-text-color"
+                
+                    id="navbarDropdown2"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style={{ cursor: "pointer" }}
+                  >
+                    Patient
                   </a>
+                  <div class="dropdown-menu drop-down-content">
+                    <ul class="list-unstyled drop-down-pages">
+                      <li class="nav-item">
+                        <a
+                          class="dropdown-item nav-link"
+                          onClick={() => {
+                      navigate("/patient");
+                    }}
+                        >
+                          Home
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="dropdown-item nav-link"
+                          onClick={() => {
+                      navigate("/login/patient");
+                    }}
+                        >
+                          Login
+                        </a>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+
+                  <a
+                    class="nav-link dropdown-toggle dropdown-color navbar-text-color"
+                    id="navbarDropdown2"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style={{ cursor: "pointer" }}
+                  >
+                    Optical
+                  </a>
+                  <div class="dropdown-menu drop-down-content">
+                    <ul class="list-unstyled drop-down-pages">
+                      <li class="nav-item">
+                        <a
+                          class="dropdown-item nav-link"
+                          onClick={() => {
+                      navigate("/optical");
+                    }}
+                        >
+                          Home
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="dropdown-item nav-link"
+                          onClick={() => {
+                      navigate("/login/optical");
+                    }}
+                        >
+                          Login
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="dropdown-item nav-link"
+                          onClick={() => {
+                      navigate("/optical/dashboard");
+                    }}
+                        >
+                          Dashboard
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="nav-item">
+                
+                  <a
+                    class="nav-link dropdown-toggle dropdown-color navbar-text-color"
+                    id="navbarDropdown2"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    style={{ cursor: "pointer" }}
+                  >
+                    Hospital
+                  </a>
+                  <div class="dropdown-menu drop-down-content">
+                    <ul class="list-unstyled drop-down-pages">
+                      <li class="nav-item">
+                        <a
+                          class="dropdown-item nav-link"
+                          onClick={() => {
+                      navigate("/hospital");
+                    }}
+                        >
+                          Home
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="dropdown-item nav-link"
+                          onClick={() => {
+                      navigate("/login/hospital");
+                    }}
+                        >
+                          Login
+                        </a>
+                      </li>
+                       <li class="nav-item">
+                        <a
+                          class="dropdown-item nav-link"
+                          onClick={() => {
+                      navigate("/hospital/dashboard");
+                    }}
+                        >
+                          Dashboard
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
               </ul>
               <div class="last_list">
@@ -189,7 +317,6 @@ const Header = () => {
                 >
                   Appointment<i class="fa-solid fa-arrow-right"></i>
                 </a>
-                
               </div>
             </div>
           </nav>

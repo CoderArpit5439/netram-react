@@ -7,7 +7,7 @@ const Header = () => {
     <div>
       <div class="top-bar-con">
         <div class="container">
-          <div class="top-bar-box">
+          {/* <div class="top-bar-box">
             <div class="top-bar-info">
               <ul class="list-unstyled mb-0">
                 <li class="info">
@@ -77,7 +77,7 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <header

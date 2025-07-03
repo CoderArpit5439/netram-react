@@ -1,7 +1,25 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { frameData } from "../component/DummyData";
+import EyewearCard from "../component/EyewearCard";
+import Slider from "react-slick";
+import EyewearSlider from "../component/EyewearSlider";
 
 const Home = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log("Form Data:", data);
+    // Add your API POST logic here
+    reset(); // optional: reset form after submit
+  };
+
   const navigate = useNavigate();
   const offer = [
     {
@@ -70,6 +88,35 @@ const Home = () => {
       ans: "Absolutely. They reduce eye strain from digital screens, which is vital for growing eyes.",
     },
   ];
+
+    const settings = {
+    dots: false,
+    arrows: true,
+    infinite: true,
+    speed: 5000,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1200, // lg
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 992, // md
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 576, // sm
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
   return (
     <div>
       <div class="home1_banner_outer position-relative">
@@ -99,7 +146,11 @@ const Home = () => {
           <div class="container">
             <div class="row">
               <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                <div class="banner_content" data-aos="fade-up">
+                <div
+                  class="banner_content"
+                  data-aos="fade-up"
+                  style={{ paddingTop: "24px" }}
+                >
                   <h6>Welcome to the E-Netram</h6>
                   <h1 class="text-white">Clear Vision Starts With Experts</h1>
                   <p class="text-white text-size-18">
@@ -107,19 +158,128 @@ const Home = () => {
                     committed to protecting your vision and enhancing your eye
                     health.
                   </p>
-                  <div class="button_wrapper">
-                    <a
-                      onClick={() => {
-                        navigate("/contact");
-                      }}
-                      class="text-decoration-none primary_btn"
-                    >
-                      Make Appointment<i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                    {/* <a href="contact.html" class="text-decoration-none primary_btn secondary_btn">Buy Now<i class="fa-solid fa-arrow-right"></i></a> */}
+                  <div className="footer-con">
+                    <div className="upper-portion">
+                      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+                        <div class="form-group position-relative mb-0">
+                          <div className="d-lg-flex">
+                            <div style={{ display: "inline-grid" }}>
+                              <select
+                                {...register("problem", {
+                                  required: true,
+                                })}
+                                type="text"
+                                class="form_style"
+                                name="email"
+                                style={{
+                                  fontSize: "14px",
+                                  lineHeight: "14px",
+                                  fontWeight: "400",
+                                  padding: "16px 28px",
+                                  marginRight: "16px",
+                                  marginTop: "16px",
+                                  width: "245px",
+                                  position: "relative",
+                                  color: "var(--e-global-color-text)",
+                                  backgroundColor:
+                                    "var(--e-global-color-white)",
+                                  borderRadius: "8px",
+                                  border: "1px solid transparent",
+                                  overflow: "visible",
+                                  outline: "none",
+                                }}
+                              >
+                                <option value="">Select problem</option>
+                                <option value="Cataract">Cataract</option>
+                                <option value="Eye Test">Eye Test</option>
+                                <option value="Tear Film Dysfunction">
+                                  Tear Film Dysfunction
+                                </option>
+                                <option value="Pterygium">Pterygium</option>
+                                <option value="Glaucoma">Glaucoma</option>
+                                <option value="Retina Issue">
+                                  Retina Issue
+                                </option>
+                                <option value="Dry Eyes">Dry Eyes</option>
+                                <option value="LASIK Consultation">
+                                  LASIK Consultation
+                                </option>
+                              </select>
+                              {errors.problem && (
+                                <span className="text-danger ">
+                                  Please select anyone problem
+                                </span>
+                              )}
+                            </div>
+                            <div style={{ display: "inline-grid" }}>
+                              <input
+                                type="text"
+                                class="form_style"
+                                placeholder="Enter Your Number"
+                                {...register("mobile", {
+                                  required: "Mobile number is required.",
+                                  pattern: {
+                                    value: /^[6-9]\d{9}$/,
+                                    message:
+                                      "Enter a valid 10-digit mobile number.",
+                                  },
+                                })}
+                                style={{
+                                  fontSize: "14px",
+                                  lineHeight: "14px",
+                                  fontWeight: "400",
+                                  padding: "16px 28px",
+                                  marginRight: "16px",
+                                  marginTop: "16px",
+                                  width: "245px",
+                                  position: "relative",
+                                  color: "var(--e-global-color-text)",
+                                  backgroundColor:
+                                    "var(--e-global-color-white)",
+                                  borderRadius: "8px",
+                                  border: "1px solid transparent",
+                                  overflow: "visible",
+                                  outline: "none",
+                                }}
+                              />
+                              {errors.mobile && (
+                                <span className="text-danger ">
+                                  {errors.mobile.message}
+                                </span>
+                              )}
+                            </div>
+                            <div>
+                              <button
+                                style={{
+                                  fontSize: "16px",
+                                  lineHeight: "16px",
+                                  fontWeight: 600,
+                                  width: "170px",
+                                  padding: "17px 27px",
+                                  marginTop: "16px",
+                                  color: "var(--e-global-color-secondary)",
+                                  backgroundColor:
+                                    "var(--e-global-color-accent)",
+                                  borderRadius: "8px",
+                                  position: "relative",
+                                  border: "none",
+                                  overflow: "visible",
+                                  outline: "none",
+                                  transition: "all 0.8s ease-in-out",
+                                }}
+                                type="submit"
+                              >
+                                Appointment
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
+
               <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="banner_wrapper position-relative">
                   <figure class="banner-rightbackground mb-0">
@@ -152,11 +312,11 @@ const Home = () => {
       {/* <!-- Eyewear listing --> */}
       <div
         class=" container blog-posts blogpage-section six-main-box"
-        style={{ paddingTop: "100px", paddingBottom: "0px" }}
+        style={{ paddingTop: "40px", paddingBottom: "0px" }}
       >
         <div class="row">
           <div class="col-12 mx-auto">
-            <div class="service_content text-center" data-aos="fade-up">
+            <div class="service_content text-center" style={{marginBottom:"25px"}}>
               <h6>What We Offer</h6>
               <h2>We Provide Best Services</h2>
             </div>
@@ -167,97 +327,24 @@ const Home = () => {
             class="row wow fadeInUp"
             style={{ visibility: "visible", animationName: "fadeInUp" }}
           >
-            {[1, 2, 3, 4]?.map(() => {
-              return (
-                <div class="col-xl-3 col-lg-6 col-md-6">
-                  <div class="blog-box sixcolumn-blog float-left w-100 post-item mb-4">
-                    <div class="post-item-wrap position-relative">
-                      <div
-                        id="blogslider"
-                        class="carousel slide"
-                        data-ride="carousel"
-                      >
-                        <div class="carousel-inner">
-                          <div class="carousel-item">
-                            <img
-                              src="assets/images/standard_post_img02.jpg"
-                              alt="image"
-                              loading="lazy"
-                            />
-                            {/* <!--carousel-item--> */}
-                          </div>
-                          <div class="carousel-item">
-                            <img
-                              src="assets/images/standard_post_img03.jpg"
-                              alt="image"
-                              loading="lazy"
-                            />
-                            {/* <!--carousel-item--> */}
-                          </div>
-                          <div class="carousel-item active">
-                            <img
-                              src="assets/images/standard_post_img04.jpg"
-                              alt="image"
-                              loading="lazy"
-                            />
-                            {/* <!--carousel-item--> */}
-                          </div>
-                          {/* <!--carousel-inner--> */}
-                        </div>
-                        {/* <!-- Left and right controls --> */}
-                        <a
-                          class="carousel-control-prev"
-                          href="#blogslider"
-                          data-slide="prev"
-                        >
-                          <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a
-                          class="carousel-control-next"
-                          href="#blogslider"
-                          data-slide="next"
-                        >
-                          <span class="carousel-control-next-icon"></span>
-                        </a>
-                        {/* <!--blogslider--> */}
-                      </div>
-                      <div class="lower-portion">
-                        <div class="span-i-con">
-                          <i class="fa-solid fa-user"></i>
-                          <span class="text-size-14 text-mr">By : Admin</span>
-                          <i class="tag-mb fa-solid fa-tag"></i>
-                          <span class="text-size-14">Virtual Assistant</span>
-                        </div>
-                        <p class="mb-0 text-size-16">lorem</p>
-                      </div>
-                      <div class="button-portion">
-                        <div class="date">
-                          <i class="mb-0 calendar-ml fa-solid fa-calendar-days"></i>
-                          <span class="mb-0 text-size-14">Dec 20,2022</span>
-                        </div>
-                        <div class="button">
-                          <a
-                            class="mb-0 read_more text-decoration-none"
-                          onClick={()=>{navigate('/eyewear/slug')}}
-                          >
-                            Buy Now
-                          </a>
-                        </div>
-                      </div>
-                      {/* <!--post-item-wrap--> */}
-                    </div>
-                    {/* <!--post-item--> */}
-                  </div>
-                  {/* <!--col--> */}
-                </div>
-              );
-            })}
+           <Slider {...settings}>
+                   {frameData?.map((product, i) => (
+                     <div key={i} className="px-2">
+                       <EyewearCard data={product} />
+                     </div>
+                   ))}
+                 </Slider>
           </div>
         </div>
         <div class="row">
           <div class="col-12 mx-auto">
-            <div class="service_content text-center" data-aos="fade-up">
-              <h5 style={{cursor:"pointer",textDecoration:"underline"}} onClick={()=>navigate('/list-eyewear')}>See More</h5>
+            <div class="service_content text-center">
+              <h5
+                style={{ cursor: "pointer", textDecoration: "underline" }}
+                onClick={() => navigate("/list-eyewear")}
+              >
+                See More
+              </h5>
             </div>
           </div>
         </div>

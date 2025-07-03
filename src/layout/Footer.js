@@ -159,10 +159,10 @@ const Footer = () => {
                     <li class="text">
                       <i class="fa-solid fa-envelope"></i>
                       <a
-                        href="mailto:info@opticest.com"
+                        href="mailto:info@enetram.com"
                         class="text-decoration-none"
                       >
-                        Info@opticest.com
+                        Info@enetram.com
                       </a>
                     </li>
                     <li class="text">
@@ -230,9 +230,6 @@ const Footer = () => {
             </form>
           </div>
         </div> */}
-        {/* <div class="copyright">
-        <p class="mb-0">Copyright ©opticest.com, All Rights Reserved 2024</p>
-    </div> */}
       </section>
     </div>
   )

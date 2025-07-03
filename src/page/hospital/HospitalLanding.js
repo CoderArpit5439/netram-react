@@ -16,7 +16,7 @@ const HospitalLanding = () => {
                         
                     <div class="owl-stage-outer"><div class="owl-stage" style={{transform: "translate3d(-1900px, 0px, 0px)", transition: "0.25s", width: "6650px"}}><div class="owl-item cloned" style={{width: "920px", marginRight: "30px"}}><div class="item">
                             <div class="banner_content">
-                                <h6>Welcome to the Opticest</h6>
+                                <h6>Welcome to the E-netram</h6>
                                 <h1 class="text-white">Expert <span>Eye Care</span><br/> For Every Stage of Life</h1>
                                 <p class="text-white text-size-18">Engage with our expert specialists to discover personalized eye care solutions that prioritize your eye health.</p>
                                 <div class="button_wrapper">
@@ -26,7 +26,7 @@ const HospitalLanding = () => {
                             </div>
                         </div></div><div class="owl-item cloned" style={{width: "920px", marginRight: "30px"}}><div class="item">
                             <div class="banner_content">
-                                <h6>Welcome to the Opticest</h6>
+                                <h6>Welcome to the E-netram</h6>
                                 <h1 class="text-white">Expert <span>Eye Care</span><br/> For Every Stage of Life</h1>
                                 <p class="text-white text-size-18">Engage with our expert specialists to discover personalized eye care solutions that prioritize your eye health.</p>
                                 <div class="button_wrapper">
@@ -36,7 +36,7 @@ const HospitalLanding = () => {
                             </div>
                         </div></div><div class="owl-item active" style={{width: "920px", marginRight: "30px"}}><div class="item">
                             <div class="banner_content">
-                                <h6>Welcome to the Opticest</h6>
+                                <h6>Welcome to the E-netram</h6>
                                 <h1 class="text-white">Expert <span>Eye Care</span><br/> For Every Stage of Life</h1>
                                 <p class="text-white text-size-18">Engage with our expert specialists to discover personalized eye care solutions that prioritize your eye health.</p>
                                 <div class="button_wrapper">
@@ -46,7 +46,7 @@ const HospitalLanding = () => {
                             </div>
                         </div></div><div class="owl-item" style={{width: "920px", marginRight: "30px"}}><div class="item">
                             <div class="banner_content">
-                                <h6>Welcome to the Opticest</h6>
+                                <h6>Welcome to the E-netram</h6>
                                 <h1 class="text-white">Expert <span>Eye Care</span><br/> For Every Stage of Life</h1>
                                 <p class="text-white text-size-18">Engage with our expert specialists to discover personalized eye care solutions that prioritize your eye health.</p>
                                 <div class="button_wrapper">
@@ -56,7 +56,7 @@ const HospitalLanding = () => {
                             </div>
                         </div></div><div class="owl-item" style={{width: "920px", marginRight: "30px"}}><div class="item">
                             <div class="banner_content">
-                                <h6>Welcome to the Opticest</h6>
+                                <h6>Welcome to the E-netram</h6>
                                 <h1 class="text-white">Expert <span>Eye Care</span><br/> For Every Stage of Life</h1>
                                 <p class="text-white text-size-18">Engage with our expert specialists to discover personalized eye care solutions that prioritize your eye health.</p>
                                 <div class="button_wrapper">
@@ -66,7 +66,7 @@ const HospitalLanding = () => {
                             </div>
                         </div></div><div class="owl-item cloned" style={{width: "920px", marginRight: "30px"}}><div class="item">
                             <div class="banner_content">
-                                <h6>Welcome to the Opticest</h6>
+                                <h6>Welcome to the E-netram</h6>
                                 <h1 class="text-white">Expert <span>Eye Care</span><br/> For Every Stage of Life</h1>
                                 <p class="text-white text-size-18">Engage with our expert specialists to discover personalized eye care solutions that prioritize your eye health.</p>
                                 <div class="button_wrapper">
@@ -76,7 +76,7 @@ const HospitalLanding = () => {
                             </div>
                         </div></div><div class="owl-item cloned" style={{width: "920px", marginRight: "30px"}}><div class="item">
                             <div class="banner_content">
-                                <h6>Welcome to the Opticest</h6>
+                                <h6>Welcome to the E-netram</h6>
                                 <h1 class="text-white">Expert <span>Eye Care</span><br/> For Every Stage of Life</h1>
                                 <p class="text-white text-size-18">Engage with our expert specialists to discover personalized eye care solutions that prioritize your eye health.</p>
                                 <div class="button_wrapper">

@@ -31,7 +31,7 @@ const Routers = () => {
             <Route path='/optical/dashboard' element={<OpticalDashboard />} />
             
             <Route path='/hospital' element={<HospitalLanding />} />
-            <Route path='/hospital/dashboard' element={<HospitalDashboard />} />
+            {/* <Route path='/hospital/dashboard' element={<HospitalDashboard />} /> */}
         </Routes>
         <Footer  />
         {/* <Home  /> */}

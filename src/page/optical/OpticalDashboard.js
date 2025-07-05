@@ -35,13 +35,9 @@ const OpticalDashboard = () => {
             return (
               <div class="col-lg-3 col-md-6 col-sm-6 col-12 all_column">
                 <div class="service-box all_boxes">
-                  {/* <figure class="icon">
-                        <img src="assets/images/service-icon1.png" alt="image" class="img-fluid"/>
-                    </figure> */}
                   <h5>{card.count}</h5>
                   <p class="text-size-16">{card.title} </p>
-                  {/* <a href="service-detail.html" class="text-decoration-none arrow">Learn More<i class="fa-solid fa-arrow-right"></i></a> */}
-                </div>
+                  </div>
               </div>
             );
           })}
@@ -63,7 +59,7 @@ const OpticalDashboard = () => {
                 role="tab"
                 aria-controls="dashboard"
                 aria-expanded="true"
-                aria-selected="false"
+                aria-selected="true"
               >
                 Dashboard
               </a>
@@ -116,7 +112,7 @@ const OpticalDashboard = () => {
                 href="#inquiry"
                 role="tab"
                 aria-controls="inquiry"
-                aria-selected="true"
+                aria-selected="false"
               >
                 Inquiry{" "}
               </a>

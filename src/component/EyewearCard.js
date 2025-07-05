@@ -7,7 +7,7 @@ const EyewearCard = ({data}) => {
         <div class="bg-light p-3 text-center">
           <a href="#">
             <img
-              src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg"
+              src={data?.image}
               alt="Product"
               class="img-fluid"
               style={{ height: "200px", objectFit: "contain" }}

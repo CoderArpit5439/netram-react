@@ -39,7 +39,7 @@ const DataTable = () => {
         <div class="card-body border border-dashed border-end-0 border-start-0">
           <form>
             <div class="row g-3">
-              <div class="col-xxl-5 col-sm-6">
+              <div class="col-xxl-4 col-sm-4">
                 <div class="search-box">
                   <input
                     type="text"
@@ -50,22 +50,7 @@ const DataTable = () => {
                 </div>
               </div>
               {/* <!--end col--> */}
-              <div class="col-xxl-2 col-sm-6">
-                <div>
-                  <input
-                    type="text"
-                    class="form-control flatpickr-input"
-                    data-provider="flatpickr"
-                    data-date-format="d M, Y"
-                    data-range-date="true"
-                    id="demo-datepicker"
-                    placeholder="Select date"
-                    readonly="readonly"
-                  />
-                </div>
-              </div>
-              {/* <!--end col--> */}
-              <div class="col-xxl-2 col-sm-4">
+              <div class="col-xxl-2 col-sm-3">
                 <div>
                   <div
                     class="choices"
@@ -100,7 +85,7 @@ const DataTable = () => {
                 </div>
               </div>
               {/* <!--end col--> */}
-              <div class="col-xxl-2 col-sm-4">
+              <div class="col-xxl-2 col-sm-3">
                 <div>
                   <select
                     class="form-control "
@@ -124,7 +109,7 @@ const DataTable = () => {
                 </div>
               </div>
               {/* <!--end col--> */}
-              <div class="col-xxl-1 col-sm-4">
+              <div class="col-xxl-1 col-sm-2">
                 <div>
                   <button
                     type="button"
@@ -147,18 +132,9 @@ const DataTable = () => {
               <table class="table table-nowrap align-middle" id="orderTable">
                 <thead class="text-muted table-light">
                   <tr class="text-uppercase">
-                    <th scope="col">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          id="checkAll"
-                          value="option"
-                        />
-                      </div>
-                    </th>
+                    
                     <th class="sort" data-sort="id">
-                      Order ID
+                      ID
                     </th>
                     <th class="sort" data-sort="customer_name">
                       Customer
@@ -173,10 +149,10 @@ const DataTable = () => {
                       Amount
                     </th>
                     <th class="sort" data-sort="payment">
-                      Payment Method
+                      Payment
                     </th>
                     <th class="sort" data-sort="status">
-                      Delivery Status
+                      Delivery 
                     </th>
                     <th class="sort" data-sort="city">
                       Action
@@ -185,16 +161,7 @@ const DataTable = () => {
                 </thead>
                 <tbody class="list form-check-all">
                   <tr>
-                    <th scope="row">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          name="checkAll"
-                          value="option1"
-                        />
-                      </div>
-                    </th>
+                   
                     <td class="id">
                       <a
                         href="apps-ecommerce-order-details.html"
@@ -265,16 +232,7 @@ const DataTable = () => {
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          name="checkAll"
-                          value="option1"
-                        />
-                      </div>
-                    </th>
+                   
                     <td class="id">
                       <a
                         href="apps-ecommerce-order-details.html"
@@ -345,16 +303,7 @@ const DataTable = () => {
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          name="checkAll"
-                          value="option1"
-                        />
-                      </div>
-                    </th>
+                   
                     <td class="id">
                       <a
                         href="apps-ecommerce-order-details.html"
@@ -425,16 +374,7 @@ const DataTable = () => {
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          name="checkAll"
-                          value="option1"
-                        />
-                      </div>
-                    </th>
+                   
                     <td class="id">
                       <a
                         href="apps-ecommerce-order-details.html"
@@ -505,16 +445,7 @@ const DataTable = () => {
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          name="checkAll"
-                          value="option1"
-                        />
-                      </div>
-                    </th>
+                   
                     <td class="id">
                       <a
                         href="apps-ecommerce-order-details.html"
@@ -587,16 +518,7 @@ const DataTable = () => {
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          name="checkAll"
-                          value="option1"
-                        />
-                      </div>
-                    </th>
+                   
                     <td class="id">
                       <a
                         href="apps-ecommerce-order-details.html"
@@ -667,16 +589,7 @@ const DataTable = () => {
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          name="checkAll"
-                          value="option1"
-                        />
-                      </div>
-                    </th>
+                   
                     <td class="id">
                       <a
                         href="apps-ecommerce-order-details.html"
@@ -747,16 +660,7 @@ const DataTable = () => {
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          name="checkAll"
-                          value="option1"
-                        />
-                      </div>
-                    </th>
+                   
                     <td class="id">
                       <a
                         href="apps-ecommerce-order-details.html"

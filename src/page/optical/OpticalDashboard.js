@@ -3,6 +3,10 @@ import Pagination from "../../component/Pagination";
 import DataTable from "../../component/DataTable";
 import Profile from "../../component/Profile";
 import Analytics from "../../component/Analytics";
+import ListFollowUp from "./followUp/ListFollowUp";
+import ListInquiry from "./inquiry/ListInquiry";
+import OptProfile from "./profile/OptProfile";
+import ListCustomer from "../customer/ListCustomer";
 
 const OpticalDashboard = () => {
   const cards = [
@@ -11,11 +15,11 @@ const OpticalDashboard = () => {
       count: 105,
     },
     {
-      title: "Total Eye Reports",
+      title: "This Month Follow up",
       count: 95,
     },
     {
-      title: "Today’s Registrations",
+      title: "Total Inquiry",
       count: 16,
     },
     {
@@ -77,7 +81,7 @@ const OpticalDashboard = () => {
                 Registered Customers
               </a>
             </li>
-            <li class="nav-item">
+            {/* <li class="nav-item">
               <a
                 class="nav-link"
                 id="eyereport-tab"
@@ -89,7 +93,7 @@ const OpticalDashboard = () => {
               >
                 Eye Reports
               </a>
-            </li>
+            </li> */}
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -156,14 +160,14 @@ const OpticalDashboard = () => {
             >
             <div class="row">
                 <div class="col-lg-12">
-                 <DataTable  />
+                 <ListCustomer />
                 </div>
                 {/* <!--end col--> */}
               </div>
             </div>
 
             {/* eye reports */}
-            <div
+            {/* <div
               class="tab-pane fade"
               id="eyereport"
               role="tabpanel"
@@ -173,9 +177,8 @@ const OpticalDashboard = () => {
                 <div class="col-lg-12">
                  <DataTable  />
                 </div>
-                {/* <!--end col--> */}
               </div>
-            </div>
+            </div> */}
 
             {/* Follow up */}
             <div
@@ -186,7 +189,7 @@ const OpticalDashboard = () => {
             >
             <div class="row">
                 <div class="col-lg-12">
-                 <DataTable  />
+                 <ListFollowUp  />
                 </div>
                 {/* <!--end col--> */}
               </div>
@@ -201,7 +204,7 @@ const OpticalDashboard = () => {
             >
              <div class="row">
                 <div class="col-lg-12">
-                 <DataTable  />
+                 <ListInquiry />
                 </div>
                 {/* <!--end col--> */}
               </div>
@@ -214,7 +217,7 @@ const OpticalDashboard = () => {
               role="tabpanel"
               aria-labelledby="profile-tab"
             >
-              <Profile />
+              <OptProfile />
             </div>
            
           </div>

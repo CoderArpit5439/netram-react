@@ -13,6 +13,8 @@ import OpticalLanding from '../page/optical/OpticalLanding'
 import HospitalLanding from '../page/hospital/HospitalLanding'
 import OpticalDashboard from '../page/optical/OpticalDashboard'
 import HospitalDashboard from '../page/hospital/HospitalDashboard'
+import AdLogin from '../page/admin/AdLogin'
+import AdDashboard from '../page/admin/AdDashboard'
 
 const Routers = () => {
   return (
@@ -31,7 +33,11 @@ const Routers = () => {
             <Route path='/optical/dashboard' element={<OpticalDashboard />} />
             
             <Route path='/hospital' element={<HospitalLanding />} />
-            {/* <Route path='/hospital/dashboard' element={<HospitalDashboard />} /> */}
+            <Route path='/hospital/dashboard' element={<HospitalDashboard />} />
+
+            <Route path='/login/admin' element={<AdLogin />} />
+            <Route path='/dashboard/admin' element={<AdDashboard />} />
+
         </Routes>
         <Footer  />
         {/* <Home  /> */}

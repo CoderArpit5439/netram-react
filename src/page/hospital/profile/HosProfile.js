@@ -1,9 +1,16 @@
-import React from "react";
-import { useDisclosure } from "@mantine/hooks";
-import { Modal, Button } from "@mantine/core";
+import React, { useState } from "react";
+import HosUpdate from "./HosUpdate";
+import { hospital_data } from "../../../component/DummyData";
 
-const Profile = () => {
-  const [opened, { open, close }] = useDisclosure(false);
+const HosProfile = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [showModalUpdate, setShowModalUpdate] = useState(false);
+  const [updateData, setUpdateData] = useState();
+
+  const openUpdatePopup = (data) => {
+    setUpdateData(data);
+    setShowModalUpdate(true);
+  };
   return (
     <div>
       <div class="container py-5">
@@ -17,26 +24,21 @@ const Profile = () => {
                   <div>
                     <figure class="mb-0 image2">
                       <img
-                        src="./assets/images/testimonial-personimage2.jpg"
-                        alt="image"
+                        src={hospital_data?.hos_logo}
+                        alt={hospital_data?.hos_name}
                         class="img-fluid invert_effect"
+                        style={{height:"70px",width:"auto"}}
                       />
                     </figure>
                   </div>
                   <div>
-                    <h4 class="fw-bold mb-1">Netra Jyoti Hospital</h4>
+                    <h4 class="fw-bold mb-1">{hospital_data?.hos_name}</h4>
                     <p class="text-muted mb-0">
-                      Eye Care & Cataract Surgery Specialist
+                      {hospital_data?.hos_services?.map((ser,i) => ser + ", ")}
                     </p>
                   </div>
                   {/* <!-- Button --> */}
-                  <button
-                    class="btn btn-primary"
-                    // data-bs-toggle="modal"
-                    // data-bs-target="#updateProfileModal"
-                    type="button"
-                    onClick={open}
-                  >
+                  <button class="btn btn-primary" type="button"  onClick={()=>openUpdatePopup(hospital_data)}>
                     <i class="fa fa-edit me-2"></i>Update Profile
                   </button>
                 </div>
@@ -47,15 +49,19 @@ const Profile = () => {
                     <h6 class="text-uppercase text-muted">Contact Details</h6>
                     <ul class="list-unstyled mb-0">
                       <li>
-                        <i class="fa fa-user me-2 text-primary"></i>Dr. V. Rao
+                        <i class="fa fa-user me-2 text-primary"></i>{hospital_data?.hos_contact_person}
                       </li>
                       <li>
                         <i class="fa fa-phone me-2 text-primary"></i>
-                        022-44556677
+                        {hospital_data?.hos_mobile}
                       </li>
                       <li>
                         <i class="fa fa-envelope me-2 text-primary"></i>
-                        care@netrajyoti.com
+                        {hospital_data?.hos_email}
+                      </li>
+                      <li style={{textDecoration:"underline",cursor:"pointer"}} >
+                        <i class="fa fa-envelope me-2 text-primary"></i>
+                        {hospital_data?.hos_website}
                       </li>
                     </ul>
                   </div>
@@ -65,11 +71,19 @@ const Profile = () => {
                     <ul class="list-unstyled mb-0">
                       <li>
                         <i class="fa fa-map-marker-alt me-2 text-primary"></i>
-                        Borivali West, Mumbai
+                        {hospital_data?.hos_address}
                       </li>
                       <li>
-                        <i class="fa fa-thumbtack me-2 text-primary"></i>Pin:
-                        400092
+                        <i class="fa fa-map-marker-alt me-2 text-primary"></i>
+                        {hospital_data?.hos_city}
+                      </li>
+                      <li>
+                        <i class="fa fa-map-marker-alt me-2 text-primary"></i>
+                        {hospital_data?.hos_state}
+                      </li>
+                      <li>
+                        <i class="fa fa-thumbtack me-2 text-primary"></i>
+                        {hospital_data?.hos_pincode}
                       </li>
                     </ul>
                   </div>
@@ -82,16 +96,15 @@ const Profile = () => {
                 <div class="row">
                   <div class="col-md-6">
                     <h6 class="text-uppercase text-muted">Specialties</h6>
-                    <span class="badge bg-info me-1 mb-1">Cataract</span>
-                    <span class="badge bg-info me-1 mb-1">Retina</span>
-                    <span class="badge bg-info me-1 mb-1">Pediatric</span>
+                    <span class="badge bg-info ml-1 mb-1">Cataract</span>
+                    
                   </div>
 
                   <div class="col-md-6">
                     <h6 class="text-uppercase text-muted">Rating</h6>
                     <p class="mb-0">
                       <span class="text-warning">★★★★☆</span>
-                      <small class="text-muted">(4.5 / 5)</small>
+                      <small class="text-muted">({hospital_data?.hos_rating})</small>
                     </p>
                   </div>
                 </div>
@@ -100,8 +113,13 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <HosUpdate
+        show={showModalUpdate}
+        onClose={() => setShowModalUpdate(false)}
+        data={updateData}
+      />
     </div>
   );
 };
 
-export default Profile;
+export default HosProfile;

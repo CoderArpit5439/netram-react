@@ -188,53 +188,53 @@ export const frameData =
 
 export const optical_data = 
 {
-  "id": 1,
-  "name": "Shree Netram Optical",
-  "owner_name": "Rajesh Sharma",
-  "mobile": "9876543210",
-  "email": "info@shreenetram.com",
-  "address": "101, MG Road, Indore, MP, India",
-  "pincode": "452001",
-  "city": "Indore",
-  "state": "Madhya Pradesh",
-  "location": {
+  "opt_id": 1,
+  "opt_name": "Shree Netram Optical",
+  "opt_owner_name": "Rajesh Sharma",
+  "opt_mobile": "9876543210",
+  "opt_email": "info@shreenetram.com",
+  "opt_address": "101, MG Road, Indore, MP, India",
+  "opt_pincode": "452001",
+  "opt_city": "Indore",
+  "opt_state": "Madhya Pradesh",
+  "opt_location": {
     "latitude": 22.7196,
     "longitude": 75.8577
   },
-  "services": ["Eye Checkup", "Prescription Glasses", "Sunglasses", "Lens Fitting"],
-  "logo": "https://e-netram.com/uploads/opticals/1-logo.png",
-  "registration_date": "2024-12-01",
-  "status": "active",
-  "total_customers": 1200,
-  "total_eye_reports": 850,
-  "website": "https://e-netram.com/optical/shree-netram",
-  "rating": 4.8,
-  "reviews_count": 230
+  "opt_services": ["Eye Checkup", "Prescription Glasses", "Sunglasses", "Lens Fitting"],
+  "opt_logo": "https://t3.ftcdn.net/jpg/02/25/28/68/360_F_225286890_nF5NxURabaFwndC6hkYdLyMJ4yCaGz5t.jpg",
+  "opt_registration_date": "2024-12-01",
+  "opt_status": "active",
+  "opt_total_customers": 1200,
+  "opt_total_eye_reports": 850,
+  "opt_website": "https://e-netram.com/optical/shree-netram",
+  "opt_rating": 4.8,
+  "opt_reviews_count": 230
 }
 
 export const hospital_data = {
-  "id": 101,
-  "name": "Netra Jyoti Eye Hospital",
-  "contact_person": "Dr. Meena Verma",
-  "mobile": "9123456780",
-  "email": "netrajyoti@example.com",
-  "address": "Sector A, Vijay Nagar, Indore, MP, India",
-  "pincode": "452010",
-  "city": "Indore",
-  "state": "Madhya Pradesh",
-  "location": {
+  "hos_id": 101,
+  "hos_name": "Netra Jyoti Eye Hospital",
+  "hos_contact_person": "Dr. Meena Verma",
+  "hos_mobile": "9123456780",
+  "hos_email": "netrajyoti@example.com",
+  "hos_address": "Sector A, Vijay Nagar, Indore, MP, India",
+  "hos_pincode": "452010",
+  "hos_city": "Indore",
+  "hos_state": "Madhya Pradesh",
+  "hos_location": {
     "latitude": 22.7451,
     "longitude": 75.8920
   },
-  "specialties": ["Cataract", "Retina", "Glaucoma", "Lasik", "Pediatric Eye Care"],
-  "logo": "https://e-netram.com/uploads/hospitals/101-logo.png",
-  "registration_date": "2024-10-05",
-  "status": "active",
-  "inquiries_received": 320,
-  "inquiries_resolved": 278,
-  "website": "https://e-netram.com/hospital/netra-jyoti",
-  "rating": 4.6,
-  "reviews_count": 115
+  "hos_specialties": ["Cataract", "Retina", "Glaucoma", "Lasik", "Pediatric Eye Care"],
+  "hos_logo": "https://i.pinimg.com/736x/ca/29/90/ca299014c0bb309f08aebf61ff95dd8d.jpg",
+  "hos_registration_date": "2024-10-05",
+  "hos_status": "active",
+  "hos_inquiries_received": 320,
+  "hos_inquiries_resolved": 278,
+  "hos_website": "https://e-netram.com/hospital/netra-jyoti",
+  "hos_rating": 4.6,
+  "hos_reviews_count": 115
 }
 
 export const glass_data = {
@@ -334,6 +334,46 @@ export const frame_data = {
     "created_at": "2025-06-18T10:00:00Z"
 }
 
+export const customer_data =  {
+    "cus_id": "CUST001",
+    "cus_name": "Rahul Sharma",
+    "cus_gender": "Male",
+    "cus_age": 29,
+    "cus_mobile": "9876543210",
+    "cus_email": "rahul.sharma@example.com",
+    "cus_address": "Indore, Madhya Pradesh",
+    "cus_eye_power": {
+      "right_eye": {
+        "sph": -1.25,
+        "cyl": -0.50,
+        "axis": 90
+      },
+      "left_eye": {
+        "sph": -1.00,
+        "cyl": -0.25,
+        "axis": 80
+      }
+    },
+    "cus_frame": "Ray-Ban Classic Black",
+    "cus_lens": "Blue Cut Anti-Glare",
+    "cus_date": "2025-06-18",
+    "cus_remarks": "Complains of eye strain while working on screen"
+}
+
+export const inquiry_data =  {
+    "inq_id": "INQ001",
+    "inq_customer_name": "Rajesh Kumar",
+    "inq_mobile": "9876543210",
+    "inq_type": "Cataract",
+    "inq_location": "Indore",
+    "inq_preferred_date": "2025-06-20",
+    "inq_status": "Pending",
+    "inq_assigned_optical": "Shree Netram Optical",
+    "inq_assigned_date": "2025-06-18",
+    "inq_remarks": "Customer prefers morning slot",
+    "inq_source": "Google Ads"
+  }
+
  export const offer = [
     {
       icon: "assets/images/service-icon1.png",
@@ -406,7 +446,7 @@ export const frame_data = {
   {
     "id": 1,
     "name": "Bombay City Eye Institute",
-    "image": "https://lh3.googleusercontent.com/p/AF1QipNNKPyfU_S8lYLHOFcQvgPehdTZlnkHl6s7h08_=s1360-w1360-h1020-rw",
+    "image": "https://yourtotalvision.com/wp-content/uploads/2023/12/optometrist-and-patient-at-eye-clinic-1.jpg",
     "contact_person": "Dr. S. Kulkarni",
     "phone": "022-23456789",
     "email": "info@bceye.in",
@@ -422,7 +462,7 @@ export const frame_data = {
   {
     "id": 2,
     "name": "Aditya Jyot Eye Hospital",
-    "image": "https://lh3.googleusercontent.com/p/AF1QipNNKPyfU_S8lYLHOFcQvgPehdTZlnkHl6s7h08_=s1360-w1360-h1020-rw",
+    "image": "https://yourtotalvision.com/wp-content/uploads/2023/12/optometrist-and-patient-at-eye-clinic-1.jpg",
     "contact_person": "Dr. L. Shah",
     "phone": "022-28914567",
     "email": "contact@adityajyot.com",
@@ -438,7 +478,7 @@ export const frame_data = {
   {
     "id": 3,
     "name": "JJ Eye Hospital",
-    "image": "https://lh3.googleusercontent.com/p/AF1QipNNKPyfU_S8lYLHOFcQvgPehdTZlnkHl6s7h08_=s1360-w1360-h1020-rw",
+    "image": "https://yourtotalvision.com/wp-content/uploads/2023/12/optometrist-and-patient-at-eye-clinic-1.jpg",
     "contact_person": "Dr. Mehta",
     "phone": "022-24446688",
     "email": "info@jjeyehospital.com",
@@ -454,7 +494,7 @@ export const frame_data = {
   {
     "id": 4,
     "name": "Vision Care Hospital",
-    "image": "https://lh3.googleusercontent.com/p/AF1QipNNKPyfU_S8lYLHOFcQvgPehdTZlnkHl6s7h08_=s1360-w1360-h1020-rw",
+    "image": "https://yourtotalvision.com/wp-content/uploads/2023/12/optometrist-and-patient-at-eye-clinic-1.jpg",
     "contact_person": "Dr. Anita Desai",
     "phone": "022-22334455",
     "email": "support@visioncare.in",
@@ -470,7 +510,7 @@ export const frame_data = {
   {
     "id": 5,
     "name": "Netra Jyoti Hospital",
-    "image": "https://lh3.googleusercontent.com/p/AF1QipNNKPyfU_S8lYLHOFcQvgPehdTZlnkHl6s7h08_=s1360-w1360-h1020-rw",
+    "image": "https://yourtotalvision.com/wp-content/uploads/2023/12/optometrist-and-patient-at-eye-clinic-1.jpg",
     "contact_person": "Dr. V. Rao",
     "phone": "022-44556677",
     "email": "care@netrajyoti.com",
@@ -490,7 +530,7 @@ export const optical_shops = [
   {
     "id": 1,
     "name": "Lens & Frame Studio",
-    "image": "https://lh3.googleusercontent.com/p/AF1QipPXl4Zn1D9pcFnwMsmjvrRzUBkjgU_p01-HBjsO=s1360-w1360-h1020-rw",
+    "image": "https://thumbs.dreamstime.com/b/optical-shop-woman-near-showcase-looking-eyeglasses-optical-shop-woman-near-showcase-looking-eyeglasses-choosing-eyewear-127660682.jpg",
     "city": "Mumbai",
     "state": "Maharastra",
     "owner": "Ramesh Patel",
@@ -504,7 +544,7 @@ export const optical_shops = [
   {
     "id": 2,
     "name": "Perfect Vision Optics",
-    "image": "https://lh3.googleusercontent.com/p/AF1QipPXl4Zn1D9pcFnwMsmjvrRzUBkjgU_p01-HBjsO=s1360-w1360-h1020-rw",
+    "image": "https://thumbs.dreamstime.com/b/optical-shop-woman-near-showcase-looking-eyeglasses-optical-shop-woman-near-showcase-looking-eyeglasses-choosing-eyewear-127660682.jpg",
     "city": "Mumbai",
     "state": "Maharastra",
     "owner": "Shruti Nair",
@@ -518,7 +558,7 @@ export const optical_shops = [
   {
     "id": 3,
     "name": "Elite Eye World",
-    "image": "https://lh3.googleusercontent.com/p/AF1QipPXl4Zn1D9pcFnwMsmjvrRzUBkjgU_p01-HBjsO=s1360-w1360-h1020-rw",
+    "image": "https://thumbs.dreamstime.com/b/optical-shop-woman-near-showcase-looking-eyeglasses-optical-shop-woman-near-showcase-looking-eyeglasses-choosing-eyewear-127660682.jpg",
     "city": "Mumbai",
     "state": "Maharastra",
     "owner": "Jatin Shah",
@@ -532,7 +572,7 @@ export const optical_shops = [
   {
     "id": 4,
     "name": "Shree Optical Gallery",
-    "image": "https://lh3.googleusercontent.com/p/AF1QipPXl4Zn1D9pcFnwMsmjvrRzUBkjgU_p01-HBjsO=s1360-w1360-h1020-rw",
+    "image": "https://thumbs.dreamstime.com/b/optical-shop-woman-near-showcase-looking-eyeglasses-optical-shop-woman-near-showcase-looking-eyeglasses-choosing-eyewear-127660682.jpg",
     "city": "Mumbai",
     "state": "Maharastra",
     "owner": "Deepak Agrawal",
@@ -546,7 +586,7 @@ export const optical_shops = [
   {
     "id": 5,
     "name": "Vision Zone Opticals",
-    "image": "https://lh3.googleusercontent.com/p/AF1QipPXl4Zn1D9pcFnwMsmjvrRzUBkjgU_p01-HBjsO=s1360-w1360-h1020-rw",
+    "image": "https://thumbs.dreamstime.com/b/optical-shop-woman-near-showcase-looking-eyeglasses-optical-shop-woman-near-showcase-looking-eyeglasses-choosing-eyewear-127660682.jpg",
     "city": "Mumbai",
     "state": "Maharastra",
     "owner": "Preeti Sharma",

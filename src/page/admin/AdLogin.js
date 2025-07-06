@@ -1,10 +1,9 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const AdLogin = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  console.log(741,location)
+  // const Route
   return (
     <div>
       <section class="contact-info-form-con">
@@ -14,11 +13,7 @@ const Login = () => {
               <div class="row">
                 <div class="col-12">
                   <div class="contact_form" data-aos="fade-up" style={{textAlign:"center"}}>
-                    <h6>{
-                      location?.pathname == "/login/patient" ? "Patient" :
-                      location?.pathname == "/login/optical" ? "Optical" :
-                      location?.pathname == "/login/hospital" ? "Hospital" :
-                      "No permission"}</h6>
+                    <h6>Admin</h6>
                     <h2>Login</h2>
                     <form
                       id="contactpage"
@@ -56,7 +51,7 @@ const Login = () => {
                                   type="button"
                                   id="submit"
                                   onClick={() => {
-                                    navigate("/dashboard-report");
+                                    navigate("/dashboard/admin");
                                   }}
                                   class="submit_now text-white text-decoration-none"
                                   style={{width:"38%"}}
@@ -81,4 +76,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdLogin;

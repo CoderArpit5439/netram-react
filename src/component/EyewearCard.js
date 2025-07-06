@@ -1,6 +1,7 @@
 import React from "react";
 
 const EyewearCard = ({data}) => {
+
   return (
     <div>
       <div class="card shadow-sm border rounded-3 h-100">

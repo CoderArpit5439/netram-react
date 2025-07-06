@@ -1,31 +1,29 @@
-import React from "react";
-import Pagination from "../../component/Pagination";
-import DataTable from "../../component/DataTable";
-import Profile from "../../component/Profile";
-import Analytics from "../../component/Analytics";
-// import ListCustomer from "./customer/ListCustomer";
-import ListFollowUp from "./followUp/ListFollowUp";
-import ListInquiry from "./inquiry/ListInquiry";
-import OptProfile from "./profile/HosProfile";
-import ListCustomer from "../customer/ListCustomer";
-import HosProfile from "./profile/HosProfile";
+import React from 'react'
+import Analytics from '../../component/Analytics';
+import DataTable from '../../component/DataTable';
+import Profile from '../../component/Profile';
+import AdHospital from './AdHospital';
+import AdOptical from './AdOptical';
+import AdCustomer from './AdCustomer';
+import AdInquiry from './AdInquiry';
 
-const HospitalDashboard = () => {
-  const cards = [
+const AdDashboard = () => {
+  
+ const cards = [
     {
-      title: "Registered Customers",
+      title: "Hospital",
       count: 105,
     },
     {
-      title: "This Month Follow up",
+      title: "Optical",
       count: 95,
     },
     {
-      title: "Total Inquiry",
+      title: "Customer",
       count: 16,
     },
     {
-      title: "Last 7 Days Activity",
+      title: "Inquiry",
       count: 57,
     },
   ];
@@ -58,7 +56,7 @@ const HospitalDashboard = () => {
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
               <a
-                class="nav-link"
+                class="nav-link active"
                 id="dashboard-tab"
                 data-toggle="tab"
                 href="#dashboard"
@@ -73,46 +71,45 @@ const HospitalDashboard = () => {
             <li class="nav-item">
               <a
                 class="nav-link"
-                id="regcus-tab"
+                id="hospital-tab"
                 data-toggle="tab"
-                href="#regcus"
+                href="#hoslist"
                 role="tab"
-                aria-controls="regcus"
+                aria-controls="hoslist"
                 aria-selected="false"
               >
-                Registered Customers
-              </a>
-            </li>
-            {/* <li class="nav-item">
-              <a
-                class="nav-link"
-                id="eyereport-tab"
-                data-toggle="tab"
-                href="#eyereport"
-                role="tab"
-                aria-controls="eyereport"
-                aria-selected="false"
-              >
-                Eye Reports
-              </a>
-            </li> */}
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                id="followup-tab"
-                data-toggle="tab"
-                href="#followup"
-                role="tab"
-                aria-controls="followup"
-                aria-selected="false"
-              >
-                {" "}
-                Follow-ups{" "}
+                Hospital
               </a>
             </li>
             <li class="nav-item">
               <a
-                class="nav-link active"
+                class="nav-link"
+                id="optical-tab"
+                data-toggle="tab"
+                href="#optlist"
+                role="tab"
+                aria-controls="optlist"
+                aria-selected="false"
+              >
+               Optical
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="customer-tab"
+                data-toggle="tab"
+                href="#custlist"
+                role="tab"
+                aria-controls="custlist"
+                aria-selected="false"
+              >
+                Customer
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link "
                 id="inquiry-tab"
                 data-toggle="tab"
                 href="#inquiry"
@@ -120,7 +117,7 @@ const HospitalDashboard = () => {
                 aria-controls="inquiry"
                 aria-selected="false"
               >
-                Inquiry{" "}
+                Inquiry
               </a>
             </li>
             <li class="nav-item">
@@ -140,7 +137,7 @@ const HospitalDashboard = () => {
             
             {/* Dashboard */}
             <div
-              class="tab-pane fade"
+              class="tab-pane fade active show"
               id="dashboard"
               role="tabpanel"
               aria-labelledby="dashboard-tab"
@@ -156,42 +153,43 @@ const HospitalDashboard = () => {
             {/* Registered customer */}
             <div
               class="tab-pane fade"
-              id="regcus"
+              id="hoslist"
               role="tabpanel"
-              aria-labelledby="regcus-tab"
+              aria-labelledby="hospital-tab"
             >
             <div class="row">
                 <div class="col-lg-12">
-                 <ListCustomer  />
+                 <AdHospital  />
                 </div>
                 {/* <!--end col--> */}
               </div>
             </div>
 
             {/* eye reports */}
-            {/* <div
+            <div
               class="tab-pane fade"
-              id="eyereport"
+              id="optlist"
               role="tabpanel"
-              aria-labelledby="eyereport-tab"
+              aria-labelledby="optical-tab"
             >
              <div class="row">
                 <div class="col-lg-12">
-                 <DataTable  />
+                 <AdOptical  />
                 </div>
+                {/* <!--end col--> */}
               </div>
-            </div> */}
+            </div>
 
             {/* Follow up */}
             <div
               class="tab-pane fade"
-              id="followup"
+              id="custlist"
               role="tabpanel"
-              aria-labelledby="followup-tab"
+              aria-labelledby="customer-tab"
             >
             <div class="row">
                 <div class="col-lg-12">
-                 <ListFollowUp  />
+                 <AdCustomer  />
                 </div>
                 {/* <!--end col--> */}
               </div>
@@ -199,14 +197,14 @@ const HospitalDashboard = () => {
 
             {/* Inquiry */}
             <div
-              class="tab-pane fade active show"
+              class="tab-pane fade"
               id="inquiry"
               role="tabpanel"
               aria-labelledby="inquiry-tab"
             >
              <div class="row">
                 <div class="col-lg-12">
-                 <ListInquiry />
+                 <AdInquiry  />
                 </div>
                 {/* <!--end col--> */}
               </div>
@@ -219,7 +217,7 @@ const HospitalDashboard = () => {
               role="tabpanel"
               aria-labelledby="profile-tab"
             >
-              <HosProfile />
+              <Profile />
             </div>
            
           </div>
@@ -227,6 +225,6 @@ const HospitalDashboard = () => {
       </div>
     </div>
   );
-};
+}
 
-export default HospitalDashboard;
+export default AdDashboard

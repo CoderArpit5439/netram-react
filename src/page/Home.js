@@ -1,7 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { eye_hospital, eyewear_frame, faqs, frameData, hospital_data, offer, optical_shops } from "../component/DummyData";
+import {
+  eye_hospital,
+  eyewear_frame,
+  faqs,
+  frameData,
+  hospital_data,
+  offer,
+  optical_shops,
+} from "../component/DummyData";
 import EyewearCard from "../component/EyewearCard";
 import Slider from "react-slick";
 import EyewearSlider from "../component/EyewearSlider";
@@ -22,7 +30,7 @@ const Home = () => {
   };
 
   const navigate = useNavigate();
- 
+
   const settings = {
     dots: true,
     infinite: true,
@@ -250,8 +258,8 @@ const Home = () => {
         </section>
       </div>
 
- {/* <!-- Hospital listing --> */}
-       <section class="service2-con position-relative" id="dropdown">
+      {/* <!-- Hospital listing --> */}
+      <section class="service2-con position-relative" id="dropdown" style={{paddingBottom:"50px"}}>
         <div class="container">
           <div class="row">
             <div class="col-12 mx-auto">
@@ -270,7 +278,16 @@ const Home = () => {
                     <Card data={hospital} />
                   </div>
                 ))}
-
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div
+              class="col-12 mx-auto"
+              style={{ cursor: "pointer", marginTop: "90px", textDecoration:"underline" }}
+            >
+              <div class="service_content text-center" data-aos="fade-up" onClick={()=>{navigate('/hospital/list')}}>
+                <h6>See More</h6>
               </div>
             </div>
           </div>
@@ -278,13 +295,19 @@ const Home = () => {
       </section>
 
       {/* <!-- Eyewear listing --> */}
-      <section class="case2-con position-relative" id="dropdown" style={{paddingTop:"100px"}}>
+      <section
+        class="case2-con position-relative"
+        id="dropdown"
+        style={{ paddingTop: "100px"}}
+      >
         <div class="container">
           <div class="row">
             <div class="col-12 mx-auto">
               <div class="service_content text-center" data-aos="fade-up">
                 <h6>Latest Eyewear Styles</h6>
-                <h2 style={{paddingBottom:"40px"}}>Explore frames, goggles & trending designs</h2>
+                <h2 style={{ paddingBottom: "40px" }}>
+                  Explore frames, goggles & trending designs
+                </h2>
               </div>
             </div>
           </div>
@@ -299,11 +322,21 @@ const Home = () => {
               </div>
             </div>
           </div>
+          <div class="row">
+            <div
+              class="col-12 mx-auto"
+              style={{ cursor: "pointer", marginTop: "90px", textDecoration:"underline" }}
+            >
+              <div class="service_content text-center" data-aos="fade-up" onClick={()=>{navigate('/eyewear/list')}}>
+                <h6>See More</h6>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* <!-- Optical listing --> */}
-      <section class="service2-con position-relative" id="dropdown">
+      <section class="service2-con position-relative" id="dropdown" style={{paddingBottom:"50px"}}>
         <div class="container">
           <div class="row">
             <div class="col-12 mx-auto">
@@ -318,16 +351,24 @@ const Home = () => {
               <div className="owl-carousel owl-theme">
                 {optical_shops?.map((opt, i) => (
                   <div key={i}>
-                    <Card data={opt}/>
+                    <Card data={opt} />
                   </div>
                 ))}
               </div>
             </div>
           </div>
+            <div class="row">
+            <div
+              class="col-12 mx-auto"
+              style={{ cursor: "pointer", marginTop: "90px", textDecoration:"underline" }}
+            >
+              <div class="service_content text-center" data-aos="fade-up" onClick={()=>{navigate('/optical/list')}}>
+                <h6>See More</h6>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-
-     
 
       {/* <!-- Service --> */}
       <section class="service-con position-relative" id="dropdown">

@@ -1,16 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import Pagination from "../../../component/Pagination";
-import CreateCustomer from "./CreateCustomer";
-import UpdateCustomer from "./UpdateCustomer";
+import CreatePatient from "./CreatePatient";
+import UpdatePatient from "./UpdatePatient";
 import Pagination from "../../component/Pagination";
-import { customer_data } from "../../component/DummyData";
-// import { customer_data } from "../../../component/DummyData";
+import { patient_data } from "../../component/DummyData";
+import { fetchPatient } from "../../redux/Slices/patient/PatientSlice";
+import { useDispatch, useSelector } from "react-redux";
+// import { patient_data } from "../../../component/DummyData";
 
-const ListCustomer = () => {
+const ListPatient = () => {
   const [showModal, setShowModal] = useState(false);
   const [showModalUpdate, setShowModalUpdate] = useState(false);
   const [updateData, setUpdateData] = useState();
+const dispatch = useDispatch();
+ 
+     const { patientList,loading, patientResponse} = useSelector((state) => {
+        return {
+            patientList: state?.rootReducer?.PatientSlice?.patientList,
+            loading: state?.rootReducer?.PatientSlice?.loading,
+            patientResponse: state?.rootReducer?.PatientSlice?.patientResponse,
+        }
+    })
+  console.log("Patient List:", patientList);
+  const [currentPage, setCurrentPage] = useState(1);
 
+  
+  useEffect(() => {
+    // Fetch patient data here if needed
+    const body = {
+      page: currentPage,
+    search : "",}
+  dispatch(fetchPatient());
+  }, [patientResponse]);
 
   const openUpdatePopup = (data) => { 
     setUpdateData(data);
@@ -18,11 +39,11 @@ setShowModalUpdate(true)
   }
   return (
     <div>
-      <div class="card" id="customerList">
-        <div class="card-header bcustomer-0">
+      <div class="card" id="patientList">
+        <div class="card-header bpatient-0">
           <div class="row align-items-center gy-3">
             <div class="col-sm">
-              <h5 class="card-title mb-0">Customer </h5>
+              <h5 class="card-title mb-0">Patient </h5>
             </div>
             <div class="col-sm-auto">
               <div class="d-flex gap-1 flex-wrap">
@@ -30,16 +51,16 @@ setShowModalUpdate(true)
                   type="button"
                   class="btn btn-success add-btn"
                   data-bs-toggle="modal"
-                  id="add-btn-customer"
-                  data-bs-target="#showModalcustomer"
+                  id="add-btn-patient"
+                  data-bs-target="#showModalpatient"
                 >
-                  <i class="ri-add-line align-bottom me-1"></i> Add Customer
+                  <i class="ri-add-line align-bottom me-1"></i> Add Patient
                 </button> */}
                 <button
                   className="btn btn-success me-2"
                   onClick={() => setShowModal(true)}
                 >
-                  Add Customer
+                  Add Patient
                 </button>
                 {/* <button type="button" class="btn btn-info">
                   <i class="ri-file-download-line align-bottom me-1"></i>
@@ -56,7 +77,7 @@ setShowModalUpdate(true)
             </div>
           </div>
         </div>
-        <div class="card-body bcustomer bcustomer-dashed bcustomer-end-0 bcustomer-start-0">
+        <div class="card-body bpatient bpatient-dashed bpatient-end-0 bpatient-start-0">
           <form>
             <div class="row g-3">
               <div class="col-xxl-4 col-sm-4">
@@ -64,7 +85,7 @@ setShowModalUpdate(true)
                   <input
                     type="text"
                     class="form-control search"
-                    placeholder="Search for customer ID, customer, customer status or something..."
+                    placeholder="Search for patient ID, patient, patient status or something..."
                   />
                   <i class="ri-search-line search-icon"></i>
                 </div>
@@ -133,7 +154,6 @@ setShowModalUpdate(true)
               <table class="table table-nowrap align-middle">
                 <thead class="text-muted table-light">
                   <tr class="text-uppercase">
-                    <th>ID</th>
                     <th>Name</th>
                     <th>Gender</th>
                     <th>Age</th>
@@ -150,30 +170,40 @@ setShowModalUpdate(true)
                   </tr>
                 </thead>
                 <tbody class="list form-check-all">
-                  <tr>
-                    <td>{customer_data?.cus_id}</td>
-                    <td>{customer_data?.cus_name}</td>
-                    <td>{customer_data?.cus_gender}</td>
-                    <td>{customer_data?.cus_age}</td>
-                    <td>{customer_data?.cus_mobile}</td>
-                    <td>{customer_data?.cus_email}</td>
-                    <td>{customer_data?.cus_address}</td>
-                    <td>{customer_data?.cus_eye_power?.right_eye?.sph} Sph / {customer_data?.cus_eye_power?.right_eye?.cyl} * {customer_data?.cus_eye_power?.right_eye?.axis}  </td>
-                    <td>{customer_data?.cus_eye_power?.left_eye?.sph} Sph / {customer_data?.cus_eye_power?.left_eye?.cyl} * {customer_data?.cus_eye_power?.left_eye?.axis}  </td>
-                    <td>{customer_data?.cus_lens}</td>
-                    <td>{customer_data?.cus_frame}</td>
-                    <td>{customer_data?.cus_remarks}</td>
-                    <td>{customer_data?.cus_date}</td>
+                  {
+                    patientList?.data?.map((patient_data, index) => {
+                    console.log(999,JSON.parse(patient_data.ptn_left_eye))
+
+                  const left_eye =  JSON.parse(patient_data?.ptn_left_eye);
+                  const right_eye = JSON.parse(patient_data?.ptn_right_eye);
+
+                  return (
+                    
+                  <tr key={index} >
+                    <td>{patient_data?.ptn_name}</td>
+                    <td>{patient_data?.ptn_gender}</td>
+                    <td>{patient_data?.ptn_age}</td>
+                    <td>{patient_data?.ptn_mobile}</td>
+                    <td>{patient_data?.ptn_email}</td>
+                    <td>{patient_data?.ptn_address}</td>
+                    <td>{right_eye?.sph} Sph / {right_eye?.cyl} * {right_eye?.axis}  </td>
+                    <td>{left_eye?.sph} Sph / {left_eye?.cyl} * {left_eye?.axis}  </td>
+                    <td>{patient_data?.ptn_lens}</td>
+                    <td>{patient_data?.ptn_frame}</td>
+                    <td>{patient_data?.ptn_remark}</td>
+                    <td>{patient_data?.ptn_created_at}</td>
                     <td>
                       <div className="d-flex">
                       </div>
                       <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
-                      <button className="btn btn-outline-info" onClick={()=>openUpdatePopup(customer_data)}> <i class="fas fa-edit"></i></button>
+                      <button className="btn btn-outline-info" onClick={()=>openUpdatePopup(patient_data)}> <i class="fas fa-edit"></i></button>
                     </td>
                   </tr>
+                   )}
+                  )}
                 </tbody>
               </table>
-              <Pagination />
+              {/* <Pagination /> */}
               <div class="noresult" style={{ display: "none" }}>
                 <div class="text-center">
                   <lord-icon
@@ -184,8 +214,8 @@ setShowModalUpdate(true)
                   ></lord-icon>
                   <h5 class="mt-2">Sorry! No Result Found</h5>
                   <p class="text-muted">
-                    We've searched more than 150+ Customers We did not find any
-                    customers for you search.
+                    We've searched more than 150+ Patients We did not find any
+                    patients for you search.
                   </p>
                 </div>
               </div>
@@ -196,10 +226,10 @@ setShowModalUpdate(true)
 
      
       {/* Modal Component */}
-      <CreateCustomer show={showModal} onClose={() => setShowModal(false)} />
-      <UpdateCustomer show={showModalUpdate} onClose={() => setShowModalUpdate(false)} data={updateData} />
+      <CreatePatient show={showModal} onClose={() => setShowModal(false)} />
+      <UpdatePatient show={showModalUpdate} onClose={() => setShowModalUpdate(false)} data={updateData} />
     </div>
   );
 };
 
-export default ListCustomer;
+export default ListPatient;

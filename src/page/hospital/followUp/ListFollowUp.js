@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Pagination from "../../../component/Pagination";
-import { customer_data } from "../../../component/DummyData";
+import { followup_data } from "../../../component/DummyData";
+import { useDispatch, useSelector } from "react-redux";
+import { getFollowupList } from "../../../redux/Slices/patient/PatientSlice";
 
 const ListFollowUp = () => {
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [showModalUpdate, setShowModalUpdate] = useState(false);
   const [updateData, setUpdateData] = useState();
+
+  
+  const { followupList,loading, followupResponse} = useSelector((state) => {
+    return {
+      followupList: state?.rootReducer?.PatientSlice?.followupList,
+      loading: state?.rootReducer?.PatientSlice?.loading,
+      followupResponse: state?.rootReducer?.PatientSlice?.followupResponse,
+    }
+  })
+  useEffect(() => {
+    // Fetch follow-up data here if needed
+    dispatch(getFollowupList());
+  }, [followupResponse]);
 
   const openUpdatePopup = (data) => {
     setUpdateData(data);
@@ -122,7 +138,6 @@ const ListFollowUp = () => {
               <table class="table table-nowrap align-middle">
                 <thead class="text-muted table-light">
                   <tr class="text-uppercase">
-                    <th>ID</th>
                     <th>Name</th>
                     <th>Sex/Age</th>
                     <th>Mobile/Email</th>
@@ -134,23 +149,20 @@ const ListFollowUp = () => {
                   </tr>
                 </thead>
                 <tbody class="list form-check-all">
-                  <tr>
-                    <td>{customer_data?.cus_id}</td>
-                    <td>{customer_data?.cus_name}</td>
-                    <td>{customer_data?.cus_gender} / {customer_data?.cus_age}</td>
-                    <td>{customer_data?.cus_mobile} / {customer_data?.cus_email}</td>
-                    <td>
-                      {customer_data?.cus_eye_power?.right_eye?.sph} Sph /
-                      {customer_data?.cus_eye_power?.right_eye?.cyl} *
-                      {customer_data?.cus_eye_power?.right_eye?.axis}
-                    </td>
-                    <td>
-                      {customer_data?.cus_eye_power?.left_eye?.sph} Sph /
-                      {customer_data?.cus_eye_power?.left_eye?.cyl} *
-                      {customer_data?.cus_eye_power?.left_eye?.axis}
-                    </td>
-                    <td>{customer_data?.cus_remarks}</td>
-                    <td>{customer_data?.cus_date}</td>
+                 {followupList?.data?.map((followup_data, i) => {
+                    const left_eye =  JSON.parse(followup_data?.ptn_left_eye);
+                  const right_eye = JSON.parse(followup_data?.ptn_right_eye);
+
+                  return (
+                    <tr>
+                    <td>{followup_data?.ptn_name}</td>
+                    <td>{followup_data?.ptn_gender} / {followup_data?.ptn_age}</td>
+                    <td>{followup_data?.ptn_mobile} / {followup_data?.ptn_email}</td>
+                     <td>{right_eye?.sph} Sph / {right_eye?.cyl} * {right_eye?.axis}  </td>
+                    <td>{left_eye?.sph} Sph / {left_eye?.cyl} * {left_eye?.axis}  </td>
+                   
+                    <td>{followup_data?.ptn_remark}</td>
+                    <td>{followup_data?.ptn_created_at}</td>
                     <td>
                       <div className="d-flex">
                       <button class="btn btn-outline-danger ml-2">
@@ -169,9 +181,11 @@ const ListFollowUp = () => {
                       </div>
                     </td>
                   </tr>
+                 )})}
+                 
                 </tbody>
               </table>
-              <Pagination />
+              {/* <Pagination /> */}
             </div>
           </div>
         </div>

@@ -6,6 +6,12 @@ const Header = () => {
   const navigate = useNavigate();
   const token = Cookies.get("enetramToken");
   const role = Cookies.get("role");
+  
+  const logoutFunc = () => {
+    Cookies.remove("enetramToken");
+    Cookies.remove("role");
+    navigate("/")
+  }
   return (
     <div>
       <div class="top-bar-con">
@@ -48,137 +54,34 @@ const Header = () => {
                       Home
                     </a>
                   </li>
-
                   <li class="nav-item">
                     <a
-                      class="nav-link dropdown-toggle dropdown-color navbar-text-color"
+                      class="nav-link "
                       id="navbarDropdown2"
                       role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
                       style={{ cursor: "pointer" }}
-                    >
-                      Patient
-                    </a>
-                    <div class="dropdown-menu drop-down-content">
-                      <ul class="list-unstyled drop-down-pages">
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/patient");
+                        onClick={() => {
+                              navigate("/optical");
                             }}
-                          >
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/login/patient");
-                            }}
-                          >
-                            Login
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link dropdown-toggle dropdown-color navbar-text-color"
-                      id="navbarDropdown2"
-                      role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      style={{ cursor: "pointer" }}
                     >
                       Optical
                     </a>
-                    <div class="dropdown-menu drop-down-content">
-                      <ul class="list-unstyled drop-down-pages">
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/optical");
-                            }}
-                          >
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/login/optical");
-                            }}
-                          >
-                            Login
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/optical/dashboard");
-                            }}
-                          >
-                            Dashboard
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
+                  
                   </li>
                   <li class="nav-item">
                     <a
-                      class="nav-link dropdown-toggle dropdown-color navbar-text-color"
+                      class="nav-link"
                       id="navbarDropdown2"
                       role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
+                     
                       style={{ cursor: "pointer" }}
+                      onClick={() => {
+                              navigate("/hospital");
+                            }}
                     >
                       Hospital
                     </a>
-                    <div class="dropdown-menu drop-down-content">
-                      <ul class="list-unstyled drop-down-pages">
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/hospital");
-                            }}
-                          >
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/login/hospital");
-                            }}
-                          >
-                            Login
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/hospital/dashboard");
-                            }}
-                          >
-                            Dashboard
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
+                  
                   </li>
                 </ul>
               ) : role == "admin" ? (
@@ -198,7 +101,7 @@ const Header = () => {
                       aria-expanded="false"
                       style={{ cursor: "pointer" }}
                     >
-                      Ad,
+                      Admin
                     </a>
                     <div class="dropdown-menu drop-down-content">
                       <ul class="list-unstyled drop-down-pages">
@@ -220,434 +123,75 @@ const Header = () => {
                 </ul>
               ) : role == "patient" ? (
                 <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/">
-                      Home
-                    </a>
-                  </li>
+               
                   <li class="nav-item">
                     <a
-                      class="nav-link dropdown-toggle dropdown-color navbar-text-color"
+                      class="nav-link"
                       id="navbarDropdown2"
                       role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
                       style={{ cursor: "pointer" }}
+                      onClick={() => {
+                              navigate("/dashboard/patient");
+                            }}
                     >
-                      Patient
+                      Dashboard
                     </a>
-                    <div class="dropdown-menu drop-down-content">
-                      <ul class="list-unstyled drop-down-pages">
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/patient");
-                            }}
-                          >
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/login/patient");
-                            }}
-                          >
-                            Login
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link dropdown-toggle dropdown-color navbar-text-color"
-                      id="navbarDropdown2"
-                      role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      style={{ cursor: "pointer" }}
-                    >
-                      Optical
-                    </a>
-                    <div class="dropdown-menu drop-down-content">
-                      <ul class="list-unstyled drop-down-pages">
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/optical");
-                            }}
-                          >
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/login/optical");
-                            }}
-                          >
-                            Login
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/optical/dashboard");
-                            }}
-                          >
-                            Dashboard
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link dropdown-toggle dropdown-color navbar-text-color"
-                      id="navbarDropdown2"
-                      role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      style={{ cursor: "pointer" }}
-                    >
-                      Hospital
-                    </a>
-                    <div class="dropdown-menu drop-down-content">
-                      <ul class="list-unstyled drop-down-pages">
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/hospital");
-                            }}
-                          >
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/login/hospital");
-                            }}
-                          >
-                            Login
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/hospital/dashboard");
-                            }}
-                          >
-                            Dashboard
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
                   </li>
                 </ul>
               ) : role == "hospital" ? (
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="/">
-                      Home
-                    </a>
-                  </li>
-                  <li class="nav-item">
                     <a
-                      class="nav-link dropdown-toggle dropdown-color navbar-text-color"
+                      class="nav-link "
                       id="navbarDropdown2"
                       role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
                       style={{ cursor: "pointer" }}
-                    >
-                      Patient
-                    </a>
-                    <div class="dropdown-menu drop-down-content">
-                      <ul class="list-unstyled drop-down-pages">
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/patient");
-                            }}
-                          >
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/login/patient");
-                            }}
-                          >
-                            Login
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link dropdown-toggle dropdown-color navbar-text-color"
-                      id="navbarDropdown2"
-                      role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      style={{ cursor: "pointer" }}
-                    >
-                      Optical
-                    </a>
-                    <div class="dropdown-menu drop-down-content">
-                      <ul class="list-unstyled drop-down-pages">
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/optical");
-                            }}
-                          >
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/login/optical");
-                            }}
-                          >
-                            Login
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/optical/dashboard");
-                            }}
-                          >
-                            Dashboard
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link dropdown-toggle dropdown-color navbar-text-color"
-                      id="navbarDropdown2"
-                      role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      style={{ cursor: "pointer" }}
-                    >
-                      Hospital
-                    </a>
-                    <div class="dropdown-menu drop-down-content">
-                      <ul class="list-unstyled drop-down-pages">
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/hospital");
-                            }}
-                          >
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/login/hospital");
-                            }}
-                          >
-                            Login
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
+                        onClick={() => {
                               navigate("/hospital/dashboard");
                             }}
-                          >
-                            Dashboard
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
+                    >
+                      Dashboard
+                    </a>
                   </li>
                 </ul>
               ) : role == "optical" ? (
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="/">
-                      Home
-                    </a>
-                  </li>
-                  <li class="nav-item">
                     <a
-                      class="nav-link dropdown-toggle dropdown-color navbar-text-color"
+                      class="nav-link "
                       id="navbarDropdown2"
                       role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
                       style={{ cursor: "pointer" }}
-                    >
-                      Patient
-                    </a>
-                    <div class="dropdown-menu drop-down-content">
-                      <ul class="list-unstyled drop-down-pages">
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/patient");
-                            }}
-                          >
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/login/patient");
-                            }}
-                          >
-                            Login
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link dropdown-toggle dropdown-color navbar-text-color"
-                      id="navbarDropdown2"
-                      role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      style={{ cursor: "pointer" }}
-                    >
-                      Optical
-                    </a>
-                    <div class="dropdown-menu drop-down-content">
-                      <ul class="list-unstyled drop-down-pages">
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/optical");
-                            }}
-                          >
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/login/optical");
-                            }}
-                          >
-                            Login
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
+                       onClick={() => {
                               navigate("/optical/dashboard");
                             }}
-                          >
-                            Dashboard
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link dropdown-toggle dropdown-color navbar-text-color"
-                      id="navbarDropdown2"
-                      role="button"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      style={{ cursor: "pointer" }}
                     >
-                      Hospital
+                      Dashboard
                     </a>
-                    <div class="dropdown-menu drop-down-content">
-                      <ul class="list-unstyled drop-down-pages">
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/hospital");
-                            }}
-                          >
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/login/hospital");
-                            }}
-                          >
-                            Login
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="dropdown-item nav-link"
-                            onClick={() => {
-                              navigate("/hospital/dashboard");
-                            }}
-                          >
-                            Dashboard
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
                   </li>
                 </ul>
               ) : null}
               <div class="last_list">
-                <a class="search" href="#search">
+                {/* <a class="search" href="#search">
                   <i class="search-box fa-solid fa-magnifying-glass"></i>
-                </a>
+                </a> */}
+                {!token ?
                 <a
-                  onClick={() => {
-                    navigate("/contact");
-                  }}
-                  class="text-decoration-none get_started"
+                onClick={() => {
+                  navigate("/login");
+                }}
+                class="text-decoration-none get_started"
                 >
-                  Appointment<i class="fa-solid fa-arrow-right"></i>
+                  Sign in<i class="fa-solid fa-arrow-right"></i>
                 </a>
+                :
+                <a
+                onClick={() => logoutFunc()}
+                class="text-decoration-none get_started"
+                >
+                  Sign out<i class="fa-solid fa-arrow-right"></i>
+                </a>
+                }
               </div>
             </div>
           </nav>

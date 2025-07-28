@@ -1,7 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addPatient } from "../../redux/Slices/patient/PatientSlice";
 
-const CreateCustomer = ({ show, onClose }) => {
+const CreatePatient = ({ show, onClose }) => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -10,7 +13,27 @@ const CreateCustomer = ({ show, onClose }) => {
   } = useForm();
   
   if (!show) return null;
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+
+    const ptn_left_eye = JSON.stringify({
+      sph: data.ptn_left_eye_sph,
+      cyl: data.ptn_left_eye_cyl,
+      axis: data.ptn_left_eye_axis,
+      add : data.ptn_eye_add,
+    });
+    const ptn_right_eye = JSON.stringify({
+      sph: data.ptn_right_eye_sph,
+      cyl: data.ptn_right_eye_cyl,
+      axis: data.ptn_right_eye_axis,
+      add : data.ptn_eye_add,
+    });
+    data.ptn_left_eye = ptn_left_eye;
+    data.ptn_right_eye = ptn_right_eye;
+    // Here you can handle the form submission, e.g., send data to an API
+    onClose(); // Close the modal after submission
+dispatch(addPatient(data)); // Dispatch the action to add patient
+  };
 
   return (
     <div className="project_modal">
@@ -58,11 +81,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Customer Name"
-                                          {...register("cus_name", {
+                                          {...register("ptn_name", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_name && (
+                                        {errors.ptn_name && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -73,11 +96,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Gender"
-                                          {...register("cus_gender", {
+                                          {...register("ptn_gender", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_gender && (
+                                        {errors.ptn_gender && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -88,11 +111,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Age"
-                                          {...register("cus_age", {
+                                          {...register("ptn_age", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_age && (
+                                        {errors.ptn_age && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -103,11 +126,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Mobile number"
-                                          {...register("cus_mobile", {
+                                          {...register("ptn_mobile", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_mobile && (
+                                        {errors.ptn_mobile && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -118,11 +141,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Email"
-                                          {...register("cus_email", {
+                                          {...register("ptn_email", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_email && (
+                                        {errors.ptn_email && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -133,11 +156,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Address"
-                                          {...register("cus_address", {
+                                          {...register("ptn_address", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_address && (
+                                        {errors.ptn_address && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -148,11 +171,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="RE Spherical"
-                                          {...register("cus_right_eye_sph", {
+                                          {...register("ptn_right_eye_sph", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_right_eye_sph && (
+                                        {errors.ptn_right_eye_sph && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -163,11 +186,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="RE Cylender"
-                                          {...register("cus_right_eye_cyl", {
+                                          {...register("ptn_right_eye_cyl", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_right_eye_cyl && (
+                                        {errors.ptn_right_eye_cyl && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -178,11 +201,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="RE Axis"
-                                          {...register("cus_right_eye_axis", {
+                                          {...register("ptn_right_eye_axis", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_right_eye_axis && (
+                                        {errors.ptn_right_eye_axis && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -193,11 +216,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="LE Spherical"
-                                          {...register("cus_left_eye_sph", {
+                                          {...register("ptn_left_eye_sph", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_left_eye_sph && (
+                                        {errors.ptn_left_eye_sph && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -208,11 +231,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="LE Cylender"
-                                          {...register("cus_left_eye_cyl", {
+                                          {...register("ptn_left_eye_cyl", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_left_eye_cyl && (
+                                        {errors.ptn_left_eye_cyl && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -223,11 +246,26 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="LE Axis"
-                                          {...register("cus_left_eye_axis", {
+                                          {...register("ptn_left_eye_axis", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_left_eye_axis && (
+                                        {errors.ptn_left_eye_axis && (
+                                          <span>This field is required</span>
+                                        )}
+                                      </div>
+                                    </li>
+                                    <li class="">
+                                      <div class="form-group float-left input1 position-relative">
+                                        <input
+                                          type="text"
+                                          class="form_style"
+                                          placeholder="Addition"
+                                          {...register("ptn_eye_add", {
+                                            required: true,
+                                          })}
+                                        />
+                                        {errors.ptn_eye_add && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -239,11 +277,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Frame"
-                                          {...register("cus_frame", {
+                                          {...register("ptn_frame", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_frame && (
+                                        {errors.ptn_frame && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -254,11 +292,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Lens"
-                                          {...register("cus_lens", {
+                                          {...register("ptn_lens", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_lens && (
+                                        {errors.ptn_lens && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -269,11 +307,11 @@ const CreateCustomer = ({ show, onClose }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Remark"
-                                          {...register("cus_remarks", {
+                                          {...register("ptn_remark", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_remarks && (
+                                        {errors.ptn_remark   && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -311,4 +349,4 @@ const CreateCustomer = ({ show, onClose }) => {
   );
 };
 
-export default CreateCustomer;
+export default CreatePatient;

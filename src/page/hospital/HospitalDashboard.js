@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Pagination from "../../component/Pagination";
 import DataTable from "../../component/DataTable";
 import Profile from "../../component/Profile";
@@ -7,28 +7,29 @@ import Analytics from "../../component/Analytics";
 import ListFollowUp from "./followUp/ListFollowUp";
 import ListInquiry from "./inquiry/ListInquiry";
 import OptProfile from "./profile/HosProfile";
-import ListCustomer from "../customer/ListCustomer";
+import ListCustomer from "../patient/ListPatient";
 import HosProfile from "./profile/HosProfile";
+import ListPatient from "../patient/ListPatient";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDashboard } from "../../redux/Slices/hospital/HospitalSlice";
 
 const HospitalDashboard = () => {
-  const cards = [
-    {
-      title: "Registered Customers",
-      count: 105,
-    },
-    {
-      title: "This Month Follow up",
-      count: 95,
-    },
-    {
-      title: "Total Inquiry",
-      count: 16,
-    },
-    {
-      title: "Last 7 Days Activity",
-      count: 57,
-    },
-  ];
+  const dispatch = useDispatch();
+   const { dashboard,loading, hospitalResponse} = useSelector((state) => {
+    return {
+      dashboard: state?.rootReducer?.HospitalSlice?.dashboard,
+      loading: state?.rootReducer?.HospitalSlice?.loading,
+      hospitalResponse: state?.rootReducer?.HospitalSlice?.hospitalResponse,
+    }
+  })
+  console.log(dashboard, "dashboard data");
+
+  useEffect(() => {
+    // Fetch data or perform any setup needed for the dashboard
+    dispatch(fetchDashboard());
+    // For example, you might want to dispatch an action to fetch the dashboard data
+  }, []);
+  
   return (
     <div>
       <div className="container my-5">
@@ -37,7 +38,7 @@ const HospitalDashboard = () => {
           class="row all_row aos-init mb-3 servicepage-con"
           data-aos="fade-up"
         >
-          {cards.map((card, i) => {
+          {dashboard?.data?.cards?.map((card, i) => {
             return (
               <div class="col-lg-3 col-md-6 col-sm-6 col-12 all_column">
                 <div class="service-box all_boxes">
@@ -58,7 +59,7 @@ const HospitalDashboard = () => {
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
               <a
-                class="nav-link"
+                class="nav-link active" 
                 id="dashboard-tab"
                 data-toggle="tab"
                 href="#dashboard"
@@ -80,7 +81,7 @@ const HospitalDashboard = () => {
                 aria-controls="regcus"
                 aria-selected="false"
               >
-                Registered Customers
+                Registered patients
               </a>
             </li>
             {/* <li class="nav-item">
@@ -112,7 +113,7 @@ const HospitalDashboard = () => {
             </li>
             <li class="nav-item">
               <a
-                class="nav-link active"
+                class="nav-link "
                 id="inquiry-tab"
                 data-toggle="tab"
                 href="#inquiry"
@@ -140,7 +141,7 @@ const HospitalDashboard = () => {
             
             {/* Dashboard */}
             <div
-              class="tab-pane fade"
+              class="tab-pane fade active show"
               id="dashboard"
               role="tabpanel"
               aria-labelledby="dashboard-tab"
@@ -153,7 +154,7 @@ const HospitalDashboard = () => {
               </div>
             </div>
 
-            {/* Registered customer */}
+            {/* Registered patient */}
             <div
               class="tab-pane fade"
               id="regcus"
@@ -162,7 +163,7 @@ const HospitalDashboard = () => {
             >
             <div class="row">
                 <div class="col-lg-12">
-                 <ListCustomer  />
+                 <ListPatient  />
                 </div>
                 {/* <!--end col--> */}
               </div>
@@ -199,7 +200,7 @@ const HospitalDashboard = () => {
 
             {/* Inquiry */}
             <div
-              class="tab-pane fade active show"
+              class="tab-pane fade "
               id="inquiry"
               role="tabpanel"
               aria-labelledby="inquiry-tab"

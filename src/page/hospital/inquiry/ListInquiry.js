@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Pagination from "../../../component/Pagination";
 import { inq, inquiry_data, inquiry_datauiry_data } from "../../../component/DummyData";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchInquiry } from "../../../redux/Slices/inquiry/InquirySlice";
 
 const ListInquiry = () => {
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [showModalUpdate, setShowModalUpdate] = useState(false);
   const [updateData, setUpdateData] = useState();
 
+  const { inquiryList,loading, inquiryResponse} = useSelector((state) => {
+    return {
+      inquiryList: state?.rootReducer?.InquirySlice?.inquiryList,
+      loading: state?.rootReducer?.InquirySlice?.loading,
+      inquiryResponse: state?.rootReducer?.InquirySlice?.inquiryResponse,
+    }
+  })
+
+  useEffect(() => {
+      // Fetch follow-up data here if needed
+      dispatch(fetchInquiry());
+    }, [inquiryResponse]);
+  
   const openUpdatePopup = (data) => {
     setUpdateData(data);
     setShowModalUpdate(true);
@@ -92,7 +108,6 @@ const ListInquiry = () => {
               <table class="table table-nowrap align-middle">
                 <thead class="text-muted table-light">
                   <tr class="text-uppercase">
-                    <th>ID</th>
                     <th>Name</th>
                     <th>Mobile</th>
                     <th>Inquiry type</th>
@@ -104,15 +119,17 @@ const ListInquiry = () => {
                   </tr>
                 </thead>
                 <tbody class="list form-check-all">
-                  <tr>
-                    <td>{inquiry_data?.inq_id}</td>
-                    <td>{inquiry_data?.inq_customer_name}</td>
-                    <td>{inquiry_data?.inq_mobile}</td>
+                  {
+                    inquiryList?.data?.map((inquiry_data, i) => {
+                      return (
+                          <tr key={i}>
+                    <td>{inquiry_data?.inq_name}</td>
+                    <td>{inquiry_data?.inq_number}</td>
                     <td>{inquiry_data?.inq_type}</td>
                     <td>{inquiry_data?.inq_location}</td>
-                    <td>{inquiry_data?.inq_status}</td>
-                    <td>{inquiry_data?.inq_assigned_date}</td>
-                    <td>{inquiry_data?.inq_remarks}</td>
+                    <td>{inquiry_data?.ia_status}</td>
+                    <td>{inquiry_data?.ia_created_at}</td>
+                    <td>{inquiry_data?.inq_remark}</td>
                     <td>
                       <div className="d-flex">
                         <button class="btn btn-outline-danger ml-2">
@@ -127,9 +144,11 @@ const ListInquiry = () => {
                       </div>
                     </td>
                   </tr>
+                      );
+                    })} 
                 </tbody>
               </table>
-              <Pagination />
+              {/* <Pagination /> */}
             </div>
           </div>
         </div>

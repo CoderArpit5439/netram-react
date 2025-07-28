@@ -6,7 +6,7 @@ import Analytics from "../../component/Analytics";
 import ListFollowUp from "./followUp/ListFollowUp";
 import ListInquiry from "./inquiry/ListInquiry";
 import OptProfile from "./profile/OptProfile";
-import ListCustomer from "../customer/ListCustomer";
+import ListCustomer from "../patient/ListPatient";
 
 const OpticalDashboard = () => {
   const cards = [

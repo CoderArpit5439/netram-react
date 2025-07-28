@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { UpdateSinglePatient } from "../../redux/Slices/patient/PatientSlice";
 
-const UpdateCustomer = ({ show, onClose, data }) => {
+const UpdatePatient = ({ show, onClose, data }) => {
+  const dispatch = useDispatch();
+  const [ptnId, setPtnId] = useState();
   const {
     register,
     handleSubmit,
@@ -13,28 +17,54 @@ const UpdateCustomer = ({ show, onClose, data }) => {
   
   useEffect(()=>{
       if(data){
-        setValue("cus_name",data?.cus_name)
-        setValue("cus_gender",data?.cus_gender)
-        setValue("cus_age",data?.cus_age)
-        setValue("cus_right_eye_sph",data?.cus_eye_power?.right_eye?.sph)
-        setValue("cus_right_eye_cyl",data?.cus_eye_power?.right_eye?.cyl)
-        setValue("cus_right_eye_axis",data?.cus_eye_power?.right_eye?.axis)
-        setValue("cus_left_eye_sph",data?.cus_eye_power?.left_eye?.sph)
-        setValue("cus_left_eye_cyl",data?.cus_eye_power?.left_eye?.cyl)
-        setValue("cus_left_eye_axis",data?.cus_eye_power?.left_eye?.axis)
-        setValue("cus_remarks",data?.cus_remarks)
-        setValue("cus_lens",data?.cus_lens)
-        setValue("cus_frame",data?.cus_frame)
-        setValue("cus_address",data?.cus_address)
-        setValue("cus_email",data?.cus_email)
-        setValue("cus_mobile",data?.cus_mobile)
+        setPtnId(data?.ptn_id);
+        setValue("ptn_name",data?.ptn_name)
+        setValue("ptn_gender",data?.ptn_gender)
+        setValue("ptn_age",data?.ptn_age)
+        const ptn_left_eye = JSON.parse(data?.ptn_left_eye);
+        const ptn_right_eye = JSON.parse(data?.ptn_right_eye);
+        console.log(ptn_left_eye,ptn_right_eye)
+        setValue("ptn_right_eye_sph",ptn_right_eye?.sph)
+        setValue("ptn_right_eye_cyl",ptn_right_eye?.cyl)
+        setValue("ptn_right_eye_axis",ptn_right_eye?.axis)
+        setValue("ptn_left_eye_sph",ptn_left_eye?.sph)
+        setValue("ptn_left_eye_cyl",ptn_left_eye?.cyl)
+        setValue("ptn_left_eye_axis",ptn_left_eye?.axis)
+        setValue("ptn_remark",data?.ptn_remark)
+        setValue("ptn_lens",data?.ptn_lens)
+        setValue("ptn_frame",data?.ptn_frame)
+        setValue("ptn_address",data?.ptn_address)
+        setValue("ptn_email",data?.ptn_email)
+        setValue("ptn_mobile",data?.ptn_mobile)
     }
   },[data])
 
   if (!show) return null;
 
  
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    
+    const ptn_left_eye = JSON.stringify({
+      sph: data.ptn_left_eye_sph,
+      cyl: data.ptn_left_eye_cyl,
+      axis: data.ptn_left_eye_axis,
+      add : data.ptn_eye_add,
+    });
+    const ptn_right_eye = JSON.stringify({
+      sph: data.ptn_right_eye_sph,
+      cyl: data.ptn_right_eye_cyl,
+      axis: data.ptn_right_eye_axis,
+      add : data.ptn_eye_add,
+    });
+    data.ptn_left_eye = ptn_left_eye;
+    data.ptn_right_eye = ptn_right_eye;
+    const body = { 
+      id: ptnId, 
+      body: data }
+    console.log("Update Patient Body:", body);
+    dispatch(UpdateSinglePatient(body));
+    onClose();
+  };
 
   return (
     <div className="project_modal">
@@ -82,11 +112,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Customer Name"
-                                          {...register("cus_name", {
+                                          {...register("ptn_name", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_name && (
+                                        {errors.ptn_name && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -97,11 +127,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Gender"
-                                          {...register("cus_gender", {
+                                          {...register("ptn_gender", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_gender && (
+                                        {errors.ptn_gender && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -112,11 +142,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Age"
-                                          {...register("cus_age", {
+                                          {...register("ptn_age", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_age && (
+                                        {errors.ptn_age && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -127,11 +157,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Mobile number"
-                                          {...register("cus_mobile", {
+                                          {...register("ptn_mobile", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_mobile && (
+                                        {errors.ptn_mobile && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -142,11 +172,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Email"
-                                          {...register("cus_email", {
+                                          {...register("ptn_email", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_email && (
+                                        {errors.ptn_email && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -157,11 +187,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Address"
-                                          {...register("cus_address", {
+                                          {...register("ptn_address", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_address && (
+                                        {errors.ptn_address && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -172,11 +202,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="RE Spherical"
-                                          {...register("cus_right_eye_sph", {
+                                          {...register("ptn_right_eye_sph", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_right_eye_sph && (
+                                        {errors.ptn_right_eye_sph && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -187,11 +217,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="RE Cylender"
-                                          {...register("cus_right_eye_cyl", {
+                                          {...register("ptn_right_eye_cyl", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_right_eye_cyl && (
+                                        {errors.ptn_right_eye_cyl && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -202,11 +232,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="RE Axis"
-                                          {...register("cus_right_eye_axis", {
+                                          {...register("ptn_right_eye_axis", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_right_eye_axis && (
+                                        {errors.ptn_right_eye_axis && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -217,11 +247,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="LE Spherical"
-                                          {...register("cus_left_eye_sph", {
+                                          {...register("ptn_left_eye_sph", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_left_eye_sph && (
+                                        {errors.ptn_left_eye_sph && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -232,11 +262,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="LE Cylender"
-                                          {...register("cus_left_eye_cyl", {
+                                          {...register("ptn_left_eye_cyl", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_left_eye_cyl && (
+                                        {errors.ptn_left_eye_cyl && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -247,11 +277,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="LE Axis"
-                                          {...register("cus_left_eye_axis", {
+                                          {...register("ptn_left_eye_axis", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_left_eye_axis && (
+                                        {errors.ptn_left_eye_axis && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -263,11 +293,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Frame"
-                                          {...register("cus_frame", {
+                                          {...register("ptn_frame", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_frame && (
+                                        {errors.ptn_frame && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -278,11 +308,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Lens"
-                                          {...register("cus_lens", {
+                                          {...register("ptn_lens", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_lens && (
+                                        {errors.ptn_lens && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -293,11 +323,11 @@ const UpdateCustomer = ({ show, onClose, data }) => {
                                           type="text"
                                           class="form_style"
                                           placeholder="Remark"
-                                          {...register("cus_remarks", {
+                                          {...register("ptn_remark", {
                                             required: true,
                                           })}
                                         />
-                                        {errors.cus_remarks && (
+                                        {errors.ptn_remark && (
                                           <span>This field is required</span>
                                         )}
                                       </div>
@@ -335,4 +365,4 @@ const UpdateCustomer = ({ show, onClose, data }) => {
   );
 };
 
-export default UpdateCustomer ;
+export default UpdatePatient ;

@@ -17,14 +17,17 @@ import SingleHospital from '../page/hospital/SingleHospital'
 import AdLogin from '../page/admin/AdLogin'
 import AdDashboard from '../page/admin/AdDashboard'
 import Footer from '../layout/Footer'
+import Home from '../page/Home'
 
 const PrivateRoute = () => {
   return (
      <div>
         <Header />
         <Routes>
+
+            <Route path='/' element={<Home />} />
             <Route path='/report' element={<Report  />} />
-            <Route path='/dashboard-report' element={<DashboardReport />} />
+            <Route path='/dashboard/patient' element={<DashboardReport />} />
             
             <Route path='/eyewear/list' element={<ListEyewear />} />
             <Route path='/eyewear/:slug' element={<SingleEyewear/>} />
@@ -35,8 +38,8 @@ const PrivateRoute = () => {
             <Route path='/optical/:slug' element={<SingleOptical />} />
             
             <Route path='/hospital' element={<HospitalLanding />} />
-            <Route path='/hospital/list' element={<HospitalList />} />
             <Route path='/hospital/dashboard' element={<HospitalDashboard />} />
+            <Route path='/hospital/list' element={<HospitalList />} />
             <Route path='/hospital/:slug' element={<SingleHospital />} />
 
             

@@ -32,6 +32,8 @@
 * BUILT: Mon Jul 01 2024 15:04:42 GMT+0200 (Central European Summer Time)
 */
 
+/*! js-cookie v3.0.5 | MIT */
+
 /**
  * @license React
  * react-dom-client.production.js
@@ -75,6 +77,16 @@
 /**
  * @license React
  * scheduler.production.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
+ * use-sync-external-store-with-selector.production.js
  *
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
